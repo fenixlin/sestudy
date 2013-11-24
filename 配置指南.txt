@@ -1,12 +1,16 @@
-﻿[Mysql]
-  用户名：root
+﻿[网站访问路径]
+  localhost/sestudy
+
+[Mysql]
+  用户名：sestudy
   密码：123456
   
   导入数据：http://localhost/phpmyadmin/ 上方菜单使用导入功能
-
+  数据库设置在config/database.php (尽量不要改)
+  （phpMyAdmin添加用户那里"主机"最好填localhost..我用任意主机居然出问题了……）
 
 [Apache]
-1. httpd.conf文件
+1. httpd.conf文件(wampServer->Apache项)
 
 a.这里如果是none 改为All
 
@@ -19,8 +23,4 @@ b.如果这行前面有注释符号，将注释符号'#'去掉
 
 LoadModule rewrite_module modules/mod_rewrite.so
 
-[其他]
-  框架自动加载的库在config/autoload.php
-  base_url等在config/config.php
-  数据库设置在config/database.php (尽量不要改)
   

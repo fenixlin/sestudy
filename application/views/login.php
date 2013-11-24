@@ -35,7 +35,7 @@
         </p>  
         <!--显示错误信息-->
         <div class="alert"><?php echo validation_errors(); ?></div>
-      </div>
+      </div><!--inset-->
       <p class="p-container">
         <!--按钮区域-->
         <span>忘记密码 ?</span>        

@@ -15,19 +15,19 @@ class Course_SRE extends CI_Controller {
 
         if ($role=="S")
         {
-        	$this->load->view('student\course_sre');
+        	$this->load->view('student/course_sre');
         }
         else if ($role=="T")
         {
-        	$this->load->view('teacher\course_sre');
+        	$this->load->view('teacher/course_sre');
         }
         else if ($role=="A")
         {
-        	$this->load->view('assistant\course_sre');
+        	$this->load->view('assistant/course_sre');
         }
         else if ($role=="V")
         {
-        	$this->load->view('visitor\course_sre');	
+        	$this->load->view('visitor/course_sre');	
         }
     }
 

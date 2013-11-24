@@ -15,19 +15,19 @@ class Main extends CI_Controller {
 
         if ($role=="S")
         {
-        	$this->load->view('student\index');
+        	$this->load->view('student/index');
         }
         else if ($role=="T")
         {
-        	$this->load->view('teacher\index');
+        	$this->load->view('teacher/index');
         }
         else if ($role=="A")
         {
-        	$this->load->view('assistant\index');
+        	$this->load->view('assistant/index');
         }
         else if ($role=="V")
         {
-        	$this->load->view('visitor\index');	
+        	$this->load->view('visitor/index');	
         }
     }
 
