@@ -15,20 +15,37 @@ class Course_SRE extends CI_Controller {
 
         if ($role=="S")
         {
-        	$this->load->view('student/course_sre');
+            $this->load->view('htmlhead');
+            $this->load->view('student/course_sre_header');
+            $this->load->view('student/course_sre');
+            $this->load->view('footer');
         }
         else if ($role=="T")
         {
-        	$this->load->view('teacher/course_sre');
+            $this->load->view('htmlhead');
+            $this->load->view('teacher/course_sre_header');
+            $this->load->view('teacher/course_sre');
+            $this->load->view('footer');
         }
         else if ($role=="A")
         {
-        	$this->load->view('assistant/course_sre');
+            $this->load->view('htmlhead');
+            $this->load->view('assistant/course_sre_header');
+            $this->load->view('assistant/course_sre');
+            $this->load->view('footer');
         }
         else if ($role=="V")
         {
-        	$this->load->view('visitor/course_sre');	
+            $this->load->view('htmlhead');
+            $this->load->view('visitor/course_sre_header');
+            $this->load->view('visitor/course_sre');
+            $this->load->view('footer');
         }
     }
 
+    public function notice()
+    {
+        //以下一行仅作试验用
+        $this->load->view('success');
+    }
 }

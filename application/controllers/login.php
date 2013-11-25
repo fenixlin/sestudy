@@ -35,7 +35,7 @@ class Login extends CI_Controller {
                 //存储session
                 $this->session->set_userdata($sessiondata);
                 //跳转到主页
-                redirect('/success','refresh');
+                redirect('/main','refresh');
             }
             else $this->load->view('login');
         }
