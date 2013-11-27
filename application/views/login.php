@@ -39,7 +39,7 @@
       <p class="p-container">
         <!--按钮区域-->
         <span>忘记密码 ?</span>        
-        <input id="loginsubmit" type="submit" name="go" id="go" value="登陆"/>
+        <input id="loginsubmit" type="submit" name="go" value="登陆"/>
         <input id="visitsubmit" type="submit" name="go" id="go" value="游客浏览"/>
       </p>
     </form>

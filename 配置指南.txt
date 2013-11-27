@@ -1,4 +1,7 @@
-﻿[网站访问路径]
+﻿[Github]
+  请直接在Options中把github的default目录设为 [wamp安装目录]/www/，再进行clone
+
+[网站访问路径]
   localhost/sestudy
 
 [Mysql]
@@ -8,6 +11,14 @@
   导入数据：http://localhost/phpmyadmin/ 上方菜单使用导入功能
   数据库设置在config/database.php (尽量不要改)
   （phpMyAdmin添加用户那里"主机"最好填localhost..我用任意主机居然出问题了……）
+
+  在my.ini中，增加三行配置如下：
+  [client]节点
+  default-character-set=utf8    (增加)
+  [mysql]节点
+  default-character-set=utf8    (增加)
+  [mysqld]节点
+  character_set_server=utf8    (增加)
 
 [Apache]
 1. httpd.conf文件(wampServer->Apache项)
