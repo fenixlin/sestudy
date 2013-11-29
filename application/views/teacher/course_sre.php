@@ -3,7 +3,7 @@
       <div id="sidecontent" class="span3">
         <div id="sidebar">
           <ul class="nav nav-list">
-            <li class="nav-header">示例</li>
+            <li class="nav-header">导航</li>
             <li class="active"><a href="course_sre/intro.html">课程介绍</a></li>
             <li><a href="course_sre/outline.html">课程大纲</a></li>
             <li><a href="course_sre/teacher.html">教师介绍</a></li>
