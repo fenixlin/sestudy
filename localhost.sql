@@ -9,7 +9,7 @@
 -- PHP 版本: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+SET time_zone = "+08:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,45 +28,47 @@ USE `sestudy`;
 -- --------------------------------------------------------
 
 --
--- 表的结构 `sre_stu`
+-- 表的结构 `student`
 --
 
-DROP TABLE IF EXISTS `sre_stu`;
-CREATE TABLE IF NOT EXISTS `sre_stu` (
+DROP TABLE IF EXISTS `student`;
+CREATE TABLE IF NOT EXISTS `student` (
   `userid` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `course` int(11) NOT NULL,
   `class` int(11) NOT NULL,
   `team` int(11) DEFAULT NULL,
-  PRIMARY KEY (`userid`)
+  PRIMARY KEY (`userid`,`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `sre_stu`
+-- 转存表中的数据 `student`
 --
 
-INSERT INTO `sre_stu` (`userid`, `class`, `team`) VALUES
-('student', 1, NULL);
+INSERT INTO `student` (`userid`, `course`, `class`, `team`) VALUES
+('student', 1, 1, NULL);
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `sre_tch`
+-- 表的结构 `teacher`
 --
 
-DROP TABLE IF EXISTS `sre_tch`;
-CREATE TABLE IF NOT EXISTS `sre_tch` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `teacher`;
+CREATE TABLE IF NOT EXISTS `teacher` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `course` int(11) NOT NULL,
   `class` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- 转存表中的数据 `sre_tch`
+-- 转存表中的数据 `teacher`
 --
 
-INSERT INTO `sre_tch` (`id`, `userid`, `class`) VALUES
-(1, 'teacher', 1),
-(2, 'ta', 1);
+INSERT INTO `teacher` (`id`, `userid`, `course`, `class`) VALUES
+(1, 'teacher', 1, 1),
+(2, 'ta', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -83,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `Topic` (
   `time` int(16) DEFAULT NULL,
   `content` text CHARACTER SET utf8,
   PRIMARY KEY (`topic_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- 转存表中的数据 `Topic`
@@ -111,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `TopicComment` (
   `time` int(16) DEFAULT NULL,
   `content` text,
   PRIMARY KEY (`comment_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- 转存表中的数据 `TopicComment`

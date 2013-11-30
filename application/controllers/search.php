@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-class Login extends CI_Controller {
-=======
 class Search extends CI_Controller {
->>>>>>> cb9353fb0d78fa69ec182181dc3bc72f3b3261dd
 
     public function __construct()
     {
