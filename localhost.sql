@@ -45,7 +45,8 @@ CREATE TABLE IF NOT EXISTS `student` (
 --
 
 INSERT INTO `student` (`userid`, `course`, `class`, `team`) VALUES
-('student', 1, 1, NULL);
+('student', 1, 1, NULL),
+('student', 2, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -68,7 +69,10 @@ CREATE TABLE IF NOT EXISTS `teacher` (
 
 INSERT INTO `teacher` (`id`, `userid`, `course`, `class`) VALUES
 (1, 'teacher', 1, 1),
-(2, 'ta', 1, 1);
+(2, 'teacher', 1, 2),
+(3, 'teacher', 2, 1),
+(4, 'ta', 1, 1),
+(5, 'ta', 1, 2);
 
 -- --------------------------------------------------------
 

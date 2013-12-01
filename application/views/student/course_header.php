@@ -9,14 +9,15 @@
     </ul> <!-- header_nav -->
   </div> <!-- header -->
 
+  <?php $course=$this->session->userdata('course'); ?>
   <div id="topnavbar">
     <div id="topbar">
       <div id="topnav">
         <ul>
-          <li class="active"><a href="<?=site_url()?>main.html">首页</a></li>
-          <li><a href="<?=site_url()?>course/index/1">需求分析与设计</a></li>
-          <li><a href="<?=site_url()?>course/index/2">项目管理与案例分析</a></li>
-          <li><a href="<?=site_url()?>course/index/3">质量保证与测试</a></li>
+          <li><a href="<?=site_url()?>main.html">首页</a></li>
+          <li <?php if ($course==1) echo "class=\"active\""?>><a href="<?=site_url()?>course/index/1">需求分析与设计</a></li>
+          <li <?php if ($course==2) echo "class=\"active\""?>><a href="<?=site_url()?>course/index/2">项目管理与案例分析</a></li>
+          <li <?php if ($course==3) echo "class=\"active\""?>><a href="<?=site_url()?>course/index/3">质量保证与测试</a></li>
           <li><a href="<?=site_url()?>public.html">公共资源</a></li>
           <li><a href="<?=site_url()?>board.html">留言板</a></li>
           <li class="last"><a href="#">其他</a>

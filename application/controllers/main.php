@@ -34,7 +34,7 @@ class Main extends CI_Controller {
         	$this->load->view('assistant/index');
             $this->load->view('footer');
         }
-        else if ($role=="V")
+        else if ($role=="V") //保证用户是经过了登陆的
         {
             $this->load->view('htmlhead');
         	$this->load->view('visitor/index_header');

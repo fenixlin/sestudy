@@ -15,7 +15,7 @@ class Forum extends CI_Controller
         $data = array("topic_array" => $topic_array);
         
         $this->load->view('htmlhead');
-        $this->load->view('student/course_sre_header');
+        $this->load->view('student/course_header');
         $this->load->view('forum', $data);
         $this->load->view('footer');
         
