@@ -22,16 +22,13 @@
 
       <?php
 $this->load->helper('url');
-//die(print_r($topic_array));
-
-//echo "<table border = 1>";
+$i = 1;//用做循环
 foreach ($topic_array as $topic) {
 ?>
-<div class="panel-group" id="accordion">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $i;?>">
 <?php  
     echo '<tr bgcolor="red">';
     $comment_array = array();
@@ -55,7 +52,7 @@ foreach ($topic_array as $topic) {
 </a>
 </h4>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse in">
+    <div id="collapse<?php echo $i;?>" class="panel-collapse collapse in">
       <div class="panel-body">
 <?php
     //打印评论
@@ -71,10 +68,12 @@ foreach ($topic_array as $topic) {
         }
         echo "</tr>";
     }
+    $i = $i + 1;
 ?>
       </div>
     </div>
   </div>
+</div>
 <?php
 }
 echo '<a href="'.site_url('forum/submit').'">发布新话题</a>';
