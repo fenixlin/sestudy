@@ -12,8 +12,12 @@ class Intro extends CI_Controller {
 
     public function index()
     {   
-        $role = $this->session->userdata('role');
+        if ($this->input->post())
+        {
+            $role = $this->intro_model->update();
+        }
 
+        $role = $this->session->userdata('role');
         if ($role=="S")
         {
             $this->load->view('htmlhead');

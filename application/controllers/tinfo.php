@@ -13,6 +13,11 @@ class Tinfo extends CI_Controller {
 
     public function index()
     {
+        if ($this->input->post())
+        {
+            $this->tinfo_model->update();
+        }
+
     	$role = $this->session->userdata('role');
 
         if ($role=="S")

@@ -24,21 +24,23 @@
 
       <div id="maincontent" class="span9">
         <?php $data = $this->outline_model->get_data();?>
-        <div><h3>一、教学目标</h3></div>
-        <textarea id="target" name="target" style="width:100%;height:10px;"><?=$data->target?></textarea>
-        <hr>
-        <div><h3>二、课程要求</h3></div>
-        <textarea id="requirement" name="requirement" style="width:100%;height:10px;"><?=$data->requirement?></textarea>
-        <hr>
-        <div><h3>三、教学与实践安排</h3></div>
-        <textarea id="arrangement" name="arrangement" style="width:100%;height:10px;"><?=$data->arrangement?></textarea>
-        <hr>
-        <div><h3>四、参考教材及相关资料</h3></div>
-        <textarea id="recommendation" name="recommendation" style="width:100%;height:10px;"><?=$data->recommendation?></textarea>
-        <hr>
-        <div class="span2 offset9">
-          <button type="submit" class="btn btn-large btn-primary btn-block">提交</button>
-        </div>
+        <?php echo form_open('outline');?>
+          <div><h3>一、教学目标</h3></div>
+          <textarea id="target" name="target" style="width:100%;height:10px;"><?=$data->target?></textarea>
+          <hr>
+          <div><h3>二、课程要求</h3></div>
+          <textarea id="requirement" name="requirement" style="width:100%;height:10px;"><?=$data->requirement?></textarea>
+          <hr>
+          <div><h3>三、教学与实践安排</h3></div>
+          <textarea id="arrangement" name="arrangement" style="width:100%;height:10px;"><?=$data->arrangement?></textarea>
+          <hr>
+          <div><h3>四、参考教材及相关资料</h3></div>
+          <textarea id="recommendation" name="recommendation" style="width:100%;height:10px;"><?=$data->recommendation?></textarea>
+          <hr>
+          <div class="span2 offset9">
+            <button type="submit" class="btn btn-large btn-primary btn-block">提交</button>
+          </div>
+        </form>
       </div> <!-- main content -->
     </div> <!-- row-fluid -->
   </div> <!-- content -->

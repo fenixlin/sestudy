@@ -25,9 +25,9 @@ class Outline_model extends CI_Model {
         $data = array
         (
             'target' => $this->input->post('target'),
-            'requirement' => $this->inout->post('requirement'),
-            'arrangement' => $this->inout->post('arrangement'),
-            'recommendation' => $this->inout->post('recommendation')
+            'requirement' => $this->input->post('requirement'),
+            'arrangement' => $this->input->post('arrangement'),
+            'recommendation' => $this->input->post('recommendation')
         );
         
         $this->db->update('outline',$data);        

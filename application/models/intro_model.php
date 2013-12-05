@@ -29,16 +29,15 @@ class Intro_model extends CI_Model {
             'course_code' => $this->input->post('course_code'),            
             'academy' => $this->input->post('academy'),
             'credit_hour' => $this->input->post('credit_hour'),
-            'week_hour' => $this->inout->post('week_hour'),
-            'season' => $this->inout->post('season'),
-            'belong' => $this->inout->post('belong'),
-            'requirement' => $this->inout->post('requirement'),
-            'textbook' => $this->inout->post('textbook'),
-            'c_intro' => $this->inout->post('c_intro'),
-            'e_intro' => $this->inout->post('e_intro')
+            'week_hour' => $this->input->post('week_hour'),
+            'season' => $this->input->post('season'),
+            'belong' => $this->input->post('belong'),
+            'requirement' => $this->input->post('requirement'),
+            'textbook' => $this->input->post('textbook'),
+            'c_intro' => $this->input->post('c_intro'),
+            'e_intro' => $this->input->post('e_intro')
         );
-        
-        $this->db->update('intro',$data);        
+        $this->db->update('intro',$data,array('course' => $course));        
     }
 }
 

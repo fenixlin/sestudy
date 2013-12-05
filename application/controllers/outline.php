@@ -13,6 +13,11 @@ class Outline extends CI_Controller {
 
     public function index()
     {
+        if ($this->input->post())
+        {
+            $this->outline_model->update();
+        }
+
     	$role = $this->session->userdata('role');
 
         if ($role=="S")

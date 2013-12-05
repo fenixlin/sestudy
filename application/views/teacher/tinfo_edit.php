@@ -24,11 +24,13 @@
 
       <div id="maincontent" class="span9">
         <?php $data = $this->tinfo_model->get_data();?>
-        <textarea id="info" name="info" style="width:100%;height:10px;"><?=$data->info?></textarea>
-        <hr>
-        <div class="span2 offset9">
-          <button type="submit" class="btn btn-large btn-primary btn-block">提交</button>
-        </div>
+          <?php echo form_open('tinfo');?>
+          <textarea id="info" name="info" style="width:100%;height:10px;"><?=$data->info?></textarea>
+          <hr>
+          <div class="span2 offset9">
+            <button type="submit" class="btn btn-large btn-primary btn-block">提交</button>
+          </div>
+        </form>
       </div> <!-- main content -->
     </div> <!-- row-fluid -->
   </div> <!-- content -->
