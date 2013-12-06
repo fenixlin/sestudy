@@ -5,7 +5,7 @@
           <ul class="nav nav-list">
             <li class="nav-header">导航</li>
             <li><a href="<?=site_url()?>intro.html">课程介绍</a></li>
-            <li class="active"><a href="<?=site_url()?>outline.html">课程大纲</a></li>
+            <li><a href="<?=site_url()?>outline.html">课程大纲</a></li>
             <li><a href="<?=site_url()?>tinfo.html">教师介绍</a></li>
             <li class="divider"></li>
             <li><a href="<?=site_url()?>account.html">学生账号管理</a></li>
@@ -15,7 +15,7 @@
             <li><a href="<?=site_url()?>resource.html">资料上传</a></li>
             <li><a href="<?=site_url()?>share.html">共享资料管理</a></li>
             <li class="divider"></li>
-            <li><a href="<?=site_url()?>notice.html">消息发布</a></li>
+            <li class="active"><a href="<?=site_url()?>notice.html">消息发布</a></li>
             <li><a href="<?=site_url()?>assignment.html">作业管理</a></li>
             <li><a href="<?=site_url()?>forum.html">课程讨论区</a></li>
           </ul>
@@ -23,32 +23,27 @@
       </div> <!-- sidecontent -->
 
       <div id="maincontent" class="span9">
-        <?php $data = $this->outline_model->get_data();?>
-        <?php echo form_open('outline');?>
-          <div><h3>一、教学目标</h3></div>
-          <textarea id="target" name="target" style="width:100%;height:10px;"><?=$data->target?></textarea>
-          <hr>
-          <div><h3>二、课程要求</h3></div>
-          <textarea id="requirement" name="requirement" style="width:100%;height:10px;"><?=$data->requirement?></textarea>
-          <hr>
-          <div><h3>三、教学与实践安排</h3></div>
-          <textarea id="arrangement" name="arrangement" style="width:100%;height:10px;"><?=$data->arrangement?></textarea>
-          <hr>
-          <div><h3>四、参考教材及相关资料</h3></div>
-          <textarea id="recommendation" name="recommendation" style="width:100%;height:10px;"><?=$data->recommendation?></textarea>
-          <hr>
+
+        <form method="post" action="<?=site_url()?>notice/view/<?=$nid?>.html">
+          <div><h3>消息标题：</h3></div>
+          <input class="input-block-level" type="text" name="title" id="title" value="<?=$title?>">
+          <div><h3>消息内容：</h3></div>
+          <textarea id="detail" name="detail" style="width:100%;height:200px;"><?=$detail?></textarea>
+          <br>
+          <div class="span3 offset8">
+            <input type="checkbox" id="inhome" name="inhome" checked> 将本消息同步到主页中
+          </div>
+          <br><hr>
           <div class="span3 offset8">
             <a class="btn btn-primary" type="submit"><i class="icon-ok icon-white"></i> 提交</a>
             <a class="btn" onclick="javascript:history.back(-1);"><i class="icon-arrow-left"></i> 返回</a>
           </div>
         </form>
+        
       </div> <!-- main content -->
     </div> <!-- row-fluid -->
   </div> <!-- content -->
 
 <script type="text/javascript">
-  var ue1 = UM.getEditor('target');
-  var ue2 = UM.getEditor('requirement');
-  var ue3 = UM.getEditor('arrangement');
-  var ue4 = UM.getEditor('recommendation');
+  var ue = UM.getEditor('detail');
 </script>

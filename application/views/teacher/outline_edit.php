@@ -37,8 +37,9 @@
           <div><h3>四、参考教材及相关资料</h3></div>
           <textarea id="recommendation" name="recommendation" style="width:100%;height:10px;"><?=$data->recommendation?></textarea>
           <hr>
-          <div class="span2 offset9">
-            <button type="submit" class="btn btn-large btn-primary btn-block">提交</button>
+          <div class="span3 offset8">
+            <a class="btn btn-primary" type="submit"><i class="icon-ok icon-white"></i> 提交</a>
+            <a class="btn" onclick="javascript:history.back(-1);"><i class="icon-arrow-left"></i> 返回</a>
           </div>
         </form>
       </div> <!-- main content -->
@@ -49,5 +50,5 @@
   var ue1 = UM.getEditor('target');
   var ue2 = UM.getEditor('requirement');
   var ue3 = UM.getEditor('arrangement');
-  var ue3 = UM.getEditor('recommendation');
+  var ue4 = UM.getEditor('recommendation');
 </script>

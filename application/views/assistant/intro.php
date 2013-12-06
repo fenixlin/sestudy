@@ -24,7 +24,7 @@
 
       <div id="maincontent" class="span9">
         <?php $data = $this->intro_model->get_data();?>
-        <a class="btn btn-large btn-primary" href="<?=site_url()?>intro_edit.html"><i class="icon-edit icon-white"></i> 编辑</a>
+        <a class="btn btn-primary" href="<?=site_url()?>intro_edit.html"><i class="icon-edit icon-white"></i> 编辑</a>
         <hr>
         <table class="table table-bordered table-hover">
           <tbody>

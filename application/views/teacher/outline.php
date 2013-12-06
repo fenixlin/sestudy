@@ -24,7 +24,7 @@
 
       <div id="maincontent" class="span9">
         <?php $data = $this->outline_model->get_data();?>
-        <a class="btn btn-large btn-primary" href="<?=site_url()?>outline_edit.html"><i class="icon-edit icon-white"></i> 编辑</a>
+        <a class="btn btn-primary" href="<?=site_url()?>outline_edit.html"><i class="icon-edit icon-white"></i> 编辑</a>
         <hr>
         <div><h3>一、教学目标</h3></div>
         <?=$data->target?>
