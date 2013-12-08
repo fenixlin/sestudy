@@ -37,9 +37,9 @@
           <div><h3>四、参考教材及相关资料</h3></div>
           <textarea id="recommendation" name="recommendation" style="width:100%;height:10px;"><?=$data->recommendation?></textarea>
           <hr>
-          <div class="span3 offset8">
-            <a class="btn btn-primary" type="submit"><i class="icon-ok icon-white"></i> 提交</a>
-            <a class="btn" onclick="javascript:history.back(-1);"><i class="icon-arrow-left"></i> 返回</a>
+          <div class="span3 offset9">
+            <input type="submit" class="btn btn-primary" value="提交">
+            <a class="btn" href="javascript:history.back(-1)" style="margin-left:10px">取消</a>
           </div>
         </form>
       </div> <!-- main content -->

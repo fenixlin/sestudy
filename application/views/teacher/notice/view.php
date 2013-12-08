@@ -25,7 +25,7 @@
       <div id="maincontent" class="span9">
 
       <a class="btn btn-primary" href="<?=site_url()?>notice/edit/<?=$nid?>.html"><i class="icon-edit icon-white"></i> 编辑</a>
-      <a class="btn btn-danger" href="#"><i class="icon-remove icon-white"></i> 删除</a>
+      <a class="btn btn-danger" href="<?=site_url()?>notice/delete/<?=$nid?>.html"><i class="icon-remove icon-white"></i> 删除</a>
       <a class="btn" href="<?=site_url()?>notice.html"><i class="icon-arrow-left"></i> 返回</a>
       <br><br>
 

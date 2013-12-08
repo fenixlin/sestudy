@@ -23,28 +23,17 @@
       </div> <!-- sidecontent -->
 
       <div id="maincontent" class="span9">
-        <?php $nid = $this->notice_model->set_nid(); ?>
 
-        <form method="post" action="<?=site_url()?>notice/view/<?=$nid?>.html">
-          <div><h3>消息标题：</h3></div>
-          <input class="input-block-level" type="text" name="title" id="title">
-          <div><h3>消息内容：</h3></div>
-          <textarea id="detail" name="detail" style="width:100%;height:200px;"></textarea>
-          <br>
-          <div class="span3 offset8">
-            <input type="checkbox" id="inhome" name="inhome" checked> 将本消息同步到主页中
-          </div>
-          <br><hr>
-          <div class="span3 offset9">
-            <input type="submit" class="btn btn-primary" value="提交" onclick="<?php $this->notice_model->insert(); ?>">
-            <a class="btn" href="javascript:history.back(-1)" style="margin-left:10px">取消</a>
-          </div>
-        </form>
+        <?php $this->notice_model->delete($nid); ?>
+        <br><br>
+        <div class="span6" style="margin-left:280px">
+          <font size="5px"><strong>此通知已删除！</strong></font>
+        </div>
+        <br><br>
+        <div class="span3" style="margin-left:300px">
+            <a class="btn btn-primary" href="<?=site_url()?>notice.html">返回通知消息</a>
+        </div>
         
       </div> <!-- main content -->
     </div> <!-- row-fluid -->
   </div> <!-- content -->
-
-<script type="text/javascript">
-  var ue = UM.getEditor('detail');
-</script>

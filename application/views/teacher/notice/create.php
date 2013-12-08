@@ -23,8 +23,9 @@
       </div> <!-- sidecontent -->
 
       <div id="maincontent" class="span9">
+        <?php $nid = $this->notice_model->set_nid(); ?>
 
-        <form>
+        <form method="post" action="<?=site_url()?>notice/view/<?=$nid?>.html">
           <div><h3>消息标题：</h3></div>
           <input class="input-block-level" type="text" name="title" id="title">
           <div><h3>消息内容：</h3></div>
@@ -34,9 +35,9 @@
             <input type="checkbox" id="inhome" name="inhome" checked> 将本消息同步到主页中
           </div>
           <br><hr>
-          <div class="span3 offset8">
-            <button type="submit" class="btn btn-large">取消</button>
-            <button type="submit" class="btn btn-large btn-primary">提交</button>
+          <div class="span3 offset9">
+            <input type="submit" class="btn btn-primary" value="提交" onclick="<?php $this->notice_model->insert(); ?>">
+            <a class="btn" href="javascript:history.back(-1)" style="margin-left:10px">取消</a>
           </div>
         </form>
         

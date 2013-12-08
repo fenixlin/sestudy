@@ -14,7 +14,7 @@ class Notice extends CI_Controller {
     {   
         if ($this->input->post())
         {
-            $role = $this->notice_model->update();
+            $this->notice_model->update();
         }
 
         $role = $this->session->userdata('role');
@@ -22,7 +22,7 @@ class Notice extends CI_Controller {
         {
             $this->load->view('htmlhead');
             $this->load->view('student/course_header');
-            $this->load->view('student/notice');
+            $this->load->view('student/notice/index');
             $this->load->view('footer');
         }
         else if ($role=="T")
@@ -45,7 +45,7 @@ class Notice extends CI_Controller {
     {
         if ($this->input->post())
         {
-            $role = $this->notice_model->update($nid);
+            $this->notice_model->update($nid);
         }
 
         $notice = $this->notice_model->get_notice($nid);
@@ -95,6 +95,47 @@ class Notice extends CI_Controller {
             $this->load->view('footer');
         }
         
+    }
+
+    public function create()
+    {
+        $role = $this->session->userdata('role');
+
+        if ($role=="T")
+        {
+            $this->load->view('htmlhead');
+            $this->load->view('teacher/course_header');
+            $this->load->view('teacher/notice/create');
+            $this->load->view('footer');
+        }
+        else if ($role=="A")
+        {
+            $this->load->view('htmlhead');
+            $this->load->view('assistant/course_header');
+            $this->load->view('assistant/notice/create');
+            $this->load->view('footer');
+        }
+    }
+
+    public function delete($nid)
+    {
+        $notice = $this->notice_model->get_notice($nid);
+
+        $role = $this->session->userdata('role');
+        if ($role=="T")
+        {
+            $this->load->view('htmlhead');
+            $this->load->view('teacher/course_header');
+            $this->load->view('teacher/notice/delete',$notice);
+            $this->load->view('footer');
+        }
+        else if ($role=="A")
+        {
+            $this->load->view('htmlhead');
+            $this->load->view('assistant/course_header');
+            $this->load->view('assistant/notice/delete',$notice);
+            $this->load->view('footer');
+        }
     }
 }
 

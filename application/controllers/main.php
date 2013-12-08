@@ -14,7 +14,7 @@ class Main extends CI_Controller {
     {
         if ($this->input->post())
         {
-            $role = $this->notice_model->update();
+            $this->notice_model->update();
         }
         
     	$role = $this->session->userdata('role');
@@ -45,6 +45,47 @@ class Main extends CI_Controller {
             $this->load->view('htmlhead');
         	$this->load->view('visitor/index_header');
         	$this->load->view('visitor/index');	
+            $this->load->view('footer');
+        }
+    }
+
+    public function news($nid)
+    {
+        if ($this->input->post())
+        {
+            $this->notice_model->update($nid);
+        }
+
+        $notice = $this->notice_model->get_notice($nid);
+        
+        $role = $this->session->userdata('role');
+
+        if ($role=="S")
+        {
+            $this->load->view('htmlhead');
+            $this->load->view('student/index_header');
+            $this->load->view('student/news',$notice);
+            $this->load->view('footer');
+        }
+        else if ($role=="T")
+        {
+            $this->load->view('htmlhead');
+            $this->load->view('teacher/index_header');
+            $this->load->view('teacher/news',$notice);
+            $this->load->view('footer');
+        }
+        else if ($role=="A")
+        {
+            $this->load->view('htmlhead');
+            $this->load->view('assistant/index_header');
+            $this->load->view('assistant/news',$notice);
+            $this->load->view('footer');
+        }
+        else if ($role=="V") //保证用户是经过了登陆的
+        {
+            $this->load->view('htmlhead');
+            $this->load->view('visitor/index_header');
+            $this->load->view('visitor/news',$notice); 
             $this->load->view('footer');
         }
     }

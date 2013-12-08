@@ -1,6 +1,7 @@
   <div id="content" class="main box container-fluid">
     <div class="row-fluid">
       <div id="leftcontent" class="span9">
+
         <table>
           <tr>
             <td width="650px"><h3>最新公告：</h3></td>  
@@ -11,37 +12,40 @@
         </table><!-- the title -->
         <hr>
 
-        <table class="table table-bordered table-hover">
-          <tr class="info">
-            <td nowrap="nowrap">hello</td>
-          </tr>
-          <tr>
-            <td nowrap="nowrap">hello</td>
-          </tr>
-          <tr class="info">
-            <td nowrap="nowrap">hello</td>
-          </tr>
-          <tr>
-            <td nowrap="nowrap">hello</td>
-          </tr>
-          <tr class="info">
-            <td nowrap="nowrap">hello</td>
-          </tr>
-          <tr>
-            <td nowrap="nowrap">hello</td>
-          </tr>
-          <tr class="info">
-            <td nowrap="nowrap">hello</td>
-          </tr>
-          <tr>
-            <td nowrap="nowrap">hello</td>
-          </tr>
-          <tr class="info">
-            <td nowrap="nowrap">hello</td>
-          </tr>
-          <tr>
-            <td nowrap="nowrap">hello</td>
-          </tr>
+        <?php $rows = $this->notice_model->get_home_data(); ?>
+
+        <table class="table table-hover">
+          <?php for($i=0; $i<5; $i++): ?>
+
+            <?php 
+            if ($i == 0) {
+              $row1 = $rows->first_row();
+            }
+            else 
+            {
+              $row1 = $rows->next_row();
+            }
+            $row2 = $rows->next_row();
+            ?>
+
+            <tr class="info">
+              <td width="8%"><?=$this->notice_model->get_course($row1->course)?></td>
+              <td width="13%">[<?=$row1->username?>]</td>
+              <td width="63%">
+                <a href="<?=site_url()?>main/news/<?=$row1->nid?>.html"><?=$this->notice_model->get_title($row1->title)?></a>
+              </td>
+              <td width="16%"><?=$row1->date?></td>
+            </tr>
+            <tr>
+              <td width="8%"><?=$this->notice_model->get_course($row2->course)?></td>
+              <td width="10%">[<?=$row2->username?>]</td>
+              <td width="66%">
+                <a href="<?=site_url()?>main/news/<?=$row2->nid?>.html"><?=$this->notice_model->get_title($row2->title)?></a>
+              </td>
+              <td width="16%"><?=$row2->date?></td>
+            </tr>
+
+          <?php endfor ?><!-- the end of the for cycle -->
         </table><!-- the news table -->
         
       </div> <!-- left content -->

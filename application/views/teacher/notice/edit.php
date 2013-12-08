@@ -34,9 +34,9 @@
             <input type="checkbox" id="inhome" name="inhome" checked> 将本消息同步到主页中
           </div>
           <br><hr>
-          <div class="span3 offset8">
-            <a class="btn btn-primary" type="submit"><i class="icon-ok icon-white"></i> 提交</a>
-            <a class="btn" onclick="javascript:history.back(-1);"><i class="icon-arrow-left"></i> 返回</a>
+          <div class="span3 offset9">
+            <input type="submit" class="btn btn-primary" value="提交">
+            <a class="btn" href="javascript:history.back(-1)" style="margin-left:10px">取消</a>
           </div>
         </form>
         
