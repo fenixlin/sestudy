@@ -2,7 +2,7 @@
     <div class="row-fluid">
       <div id="leftcontent" class="span9">
 
-        <a class="btn" href="<?=site_url()?>main.html"><i class="icon-arrow-left"></i> 返回</a>
+        <a class="btn btn-primary" href="javascript:history.go(-1);"><i class="icon-arrow-left icon-white"></i> 返回</a>
         <br><br>
 
         <h3 class="text-center"><?=$title?></h3>

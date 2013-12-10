@@ -23,59 +23,69 @@
       </div> <!-- sidecontent -->
 
       <div id="maincontent" class="span9">
-        <?php $rows = $this->notice_model->get_course_data(); ?>
 
-        <table>
-          <tr>
-            <td width="84%"><h3>课程消息：</h3></td>  
-            <td>
-              <a class="btn btn-primary" href="<?=site_url()?>notice/create.html">新建</a>
-              <button class="btn" type="button">更多</button>
-            </td>
-          </tr>
-        </table><!-- the title -->
+        <h3>最新通知：</h3> 
+        <form class="form-search" method="post" action="<?=site_url()?>notice/search.html">
+          <table>
+            <tr>
+              <td width="84%">
+                <div class="input-append">
+                  <input type="text" id="search" name="search" class="input-large search-query" placeholder="标题关键字">
+                  <input type="submit" class="btn btn-info" value="搜索">
+                </div>
+              </td>
+              <td>                
+                <div>
+                  <a class="btn btn-primary" href="<?=site_url()?>notice/create.html">新建</a>
+                  <a class="btn" href="<?=site_url()?>notice/allnotice.html">更多</a>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </form>
         <hr>
 
-        <table class="table table-hover ">
-          <?php for($i=0; $i<5; $i++): ?>
+        <table class="table table-hover" style="border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;border-bottom: 1px solid #dddddd;border-collapse: separate;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;">
+        
+        <?php $i = 1; ?>
+        <?php foreach ($results->result() as $row): ?>
 
-            <?php 
-            if ($i == 0) {
-              $row1 = $rows->first_row();
-            }
-            else 
-            {
-              $row1 = $rows->next_row();
-            }
-            $row2 = $rows->next_row();
-            ?>
+        <?php if ($i % 2 == 1): ?>
+          <tr class="info">
+        <?php endif; ?>
+        <?php if ($i % 2 == 0): ?>
+          <tr>
+        <?php endif; ?>
+        
+            <td width="13%">&nbsp;&nbsp;[<?=$row->username?>]</td>
+            <td width="65%">
+              <a href="<?=site_url()?>notice/view/<?=$row->nid?>.html"><?=$this->notice_model->get_title($row->title)?></a>
+            </td>
+            <td width="13%"><?=$row->date?></td>
+            <td>
+              <a href="<?=site_url()?>notice/edit/<?=$row->nid?>.html"><i class="icon-edit"></i></a>&nbsp;&nbsp;
+              <a href="javascript:HandleOnClose('<?=site_url()?>notice/delete/<?=$row->nid?>.html')"><i class="icon-remove"></i></a>
+            </td>
+          </tr>
 
-            <tr class="info">
-              <td width="13%">[<?=$row1->username?>]</td>
-              <td width="65%">
-                <a href="<?=site_url()?>notice/view/<?=$row1->nid?>.html"><?=$this->notice_model->get_title($row1->title)?></a>
-              </td>
-              <td width="13%"><?=$row1->date?></td>
-              <td>
-                <a href="<?=site_url()?>notice/edit/<?=$row1->nid?>.html"><i class="icon-edit"></i></a>
-                <a href="<?=site_url()?>notice/delete/<?=$row1->nid?>.html" style="margin-left:10px;"><i class="icon-remove"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td width="13%">[<?=$row2->username?>]</td>
-              <td width="65%">
-                <a href="<?=site_url()?>notice/view/<?=$row2->nid?>.html"><?=$this->notice_model->get_title($row2->title)?></a>
-              </td>
-              <td width="13%"><?=$row2->date?></td>
-              <td>
-                  <a href="<?=site_url()?>notice/edit/<?=$row2->nid?>.html"><i class="icon-edit"></i></a>
-                  <a href="<?=site_url()?>notice/delete/<?=$row2->nid?>.html" style="margin-left:10px;"><i class="icon-remove"></i></a>
-              </td>
-            </tr>
+        <?php $i++; ?>
+        <?php endforeach; ?><!-- the end of the foreach cycle -->
 
-          <?php endfor ?><!-- the end of the for cycle -->
-        </table><!-- the news table -->
+        </table><!-- the notice table -->
         
       </div> <!-- main content -->
     </div> <!-- row-fluid -->
   </div> <!-- content -->
+
+<script language="JavaScript" type="text/JavaScript">
+function HandleOnClose(url) {
+  var close = confirm("确认删除此消息？");
+  if ( close) {
+    window.open(url, '_self');
+  }
+  else
+  {
+    window.event;
+  }
+}
+</script>

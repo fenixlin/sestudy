@@ -49,5 +49,25 @@ class Tinfo extends CI_Controller {
             $this->load->view('footer');
         }
     }
+
+    public function edit()
+    {
+        $role = $this->session->userdata('role');
+
+        if ($role=="T")
+        {
+            $this->load->view('htmlhead');
+            $this->load->view('teacher/course_header');
+            $this->load->view('teacher/tinfo_edit');
+            $this->load->view('footer');
+        }
+        else if ($role=="A")
+        {
+            $this->load->view('htmlhead');
+            $this->load->view('assistant/course_header');
+            $this->load->view('assistant/tinfo_edit');
+            $this->load->view('footer');
+        }
+    }
 }
 

@@ -23,51 +23,51 @@
         <table class="table table-bordered table-hover">
           <tbody>
             <tr class="info">
-              <td class="span2"><strong>课程名称：</strong></td>
+              <td style="width:18%"><strong>&nbsp;课程名称：</strong></td>
               <td><?=$data->c_name?></td>
             </tr>
             <tr>
-              <td><strong>课程英文名称：</strong></td>
+              <td><strong>&nbsp;课程英文名称：</strong></td>
               <td><?=$data->e_name?></td>
             </tr>
             <tr class="info">
-              <td><strong>课程代码：</strong></td>
+              <td><strong>&nbsp;课程代码：</strong></td>
               <td><?=$data->course_code?></td>
             </tr>
             <tr>
-              <td><strong>开课学院：</strong></td>
+              <td><strong>&nbsp;开课学院：</strong></td>
               <td><?=$data->academy?></td>
             </tr>
             <tr class="info">
-              <td><strong>学分：</strong></td>
+              <td><strong>&nbsp;学分：</strong></td>
               <td><?=$data->credit_hour?></td>
             </tr>
             <tr>
-              <td><strong>周学时：</strong></td>
+              <td><strong>&nbsp;周学时：</strong></td>
               <td><?=$data->week_hour?></td>
             </tr>
             <tr class="info">
-              <td><strong>开课学期：</strong></td>
+              <td><strong>&nbsp;开课学期：</strong></td>
               <td><?=$data->season?></td>
             </tr>
             <tr>
-              <td><strong>课程归属：</strong></td>
+              <td><strong>&nbsp;课程归属：</strong></td>
               <td><?=$data->belong?></td>
             </tr>
             <tr class="info">
-              <td><strong>预修要求：</strong></td>
+              <td><strong>&nbsp;预修要求：</strong></td>
               <td><?=$data->requirement?></td>
             </tr>
             <tr>
-              <td><strong>推荐教材：</strong></td>
+              <td><strong>&nbsp;推荐教材：</strong></td>
               <td><?=$data->textbook?></td>
             </tr>
             <tr class="info">
-              <td><strong>课程简介：</strong></td>
+              <td><strong>&nbsp;课程简介：</strong></td>
               <td><?=$data->c_intro?></td>
             </tr>
             <tr>
-              <td><strong>英文简介：</strong></td>
+              <td><strong>&nbsp;英文简介：</strong></td>
               <td><?=$data->e_intro?></td>
             </tr>
           </tbody>

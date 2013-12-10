@@ -24,16 +24,46 @@
 
       <div id="maincontent" class="span9">
 
-      <a class="btn btn-primary" href="<?=site_url()?>notice/edit/<?=$nid?>.html"><i class="icon-edit icon-white"></i> 编辑</a>
-      <a class="btn btn-danger" href="javascript:HandleOnClose('<?=site_url()?>notice/delete/<?=$nid?>.html')"><i class="icon-remove icon-white"></i> 删除</a>
-      <a class="btn" href="javascript:history.go(-1);"><i class="icon-arrow-left"></i> 返回</a>
-      <br><br>
 
-      <h3 class="text-center"><?=$title?></h3>
-      <p class="span2 offset3">作者：<?=$username?></p>
-      <p class="span3 offset2">发布时间：<?=$date?></p>
-      <br><hr>
-      <?=$detail?>
+        <table>
+          <tr>
+            <td width="84%"><h3>查询结果：</h3></td>  
+            <td>
+              <a class="btn btn-primary" href="<?=site_url()?>notice.html">返回通知主页</a>
+            </td>
+          </tr>
+        </table><!-- the title -->
+        <hr>
+
+        <table class="table table-hover" style="border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;border-bottom: 1px solid #dddddd;border-collapse: separate;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;">
+        
+        <?php $i = 1; ?>
+        <?php foreach ($results->result() as $row): ?>
+
+        <?php if ($i % 2 == 1): ?>
+          <tr class="info">
+        <?php endif; ?>
+        <?php if ($i % 2 == 0): ?>
+          <tr>
+        <?php endif; ?>
+        
+            <td width="13%">&nbsp;&nbsp;[<?=$row->username?>]</td>
+            <td width="65%">
+              <a href="<?=site_url()?>notice/view/<?=$row->nid?>.html"><?=$this->notice_model->get_title($row->title)?></a>
+            </td>
+            <td width="13%"><?=$row->date?></td>
+            <td>
+              <a href="<?=site_url()?>notice/edit/<?=$row->nid?>.html"><i class="icon-edit"></i></a>&nbsp;&nbsp;
+              <a href="javascript:HandleOnClose('<?=site_url()?>notice/delete/<?=$row->nid?>.html')"><i class="icon-remove"></i></a>
+            </td>
+          </tr>
+          
+        <?php $i++; ?>
+        <?php endforeach; ?><!-- the end of the foreach cycle -->
+
+        </table><!-- the notice table -->
+
+        <?php echo $this->pagination->create_links(); ?>
         
       </div> <!-- main content -->
     </div> <!-- row-fluid -->

@@ -31,7 +31,7 @@
         </div>
         <br><br>
         <div class="span3" style="margin-left:300px">
-            <a class="btn btn-primary" href="<?=site_url()?>notice.html">返回通知消息</a>
+            <a class="btn btn-primary" href="<?=site_url()?>notice.html">返回消息主页</a>
         </div>
         
       </div> <!-- main content -->

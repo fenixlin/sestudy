@@ -5,7 +5,6 @@ class Search extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('search_model');
         //下面一行输出调试信息
         //$this->output->enable_profiler(TRUE);
     }

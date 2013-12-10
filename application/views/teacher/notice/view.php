@@ -25,8 +25,8 @@
       <div id="maincontent" class="span9">
 
       <a class="btn btn-primary" href="<?=site_url()?>notice/edit/<?=$nid?>.html"><i class="icon-edit icon-white"></i> 编辑</a>
-      <a class="btn btn-danger" href="<?=site_url()?>notice/delete/<?=$nid?>.html"><i class="icon-remove icon-white"></i> 删除</a>
-      <a class="btn" href="<?=site_url()?>notice.html"><i class="icon-arrow-left"></i> 返回</a>
+      <a class="btn btn-danger" href="javascript:HandleOnClose('<?=site_url()?>notice/delete/<?=$nid?>.html')"><i class="icon-remove icon-white"></i> 删除</a>
+      <a class="btn" href="javascript:history.go(-1);"><i class="icon-arrow-left"></i> 返回</a>
       <br><br>
 
       <h3 class="text-center"><?=$title?></h3>
@@ -38,3 +38,16 @@
       </div> <!-- main content -->
     </div> <!-- row-fluid -->
   </div> <!-- content -->
+
+<script language="JavaScript" type="text/JavaScript">
+function HandleOnClose(url) {
+  var close = confirm("确认删除此消息？");
+  if ( close) {
+    window.open(url, '_self');
+  }
+  else
+  {
+    window.event;
+  }
+}
+</script>

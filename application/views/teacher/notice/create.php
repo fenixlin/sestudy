@@ -36,7 +36,7 @@
           </div>
           <br><hr>
           <div class="span3 offset9">
-            <input type="submit" class="btn btn-primary" value="提交" onclick="<?php $this->notice_model->insert(); ?>">
+            <input type="submit" class="btn btn-primary" value="提交">
             <a class="btn" href="javascript:history.back(-1)" style="margin-left:10px">取消</a>
           </div>
         </form>

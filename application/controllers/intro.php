@@ -14,7 +14,7 @@ class Intro extends CI_Controller {
     {   
         if ($this->input->post())
         {
-            $role = $this->intro_model->update();
+            $this->intro_model->update();
         }
 
         $role = $this->session->userdata('role');
@@ -44,6 +44,26 @@ class Intro extends CI_Controller {
             $this->load->view('htmlhead');
             $this->load->view('visitor/course_header');
             $this->load->view('visitor/intro');
+            $this->load->view('footer');
+        }
+    }
+
+    public function edit()
+    {   
+        $role = $this->session->userdata('role');
+
+        if ($role=="T")
+        {
+            $this->load->view('htmlhead');
+            $this->load->view('teacher/course_header');
+            $this->load->view('teacher/intro_edit');
+            $this->load->view('footer');
+        }
+        else if ($role=="A")
+        {
+            $this->load->view('htmlhead');
+            $this->load->view('assistant/course_header');
+            $this->load->view('assistant/intro_edit');
             $this->load->view('footer');
         }
     }

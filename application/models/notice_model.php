@@ -6,27 +6,93 @@ class Notice_model extends CI_Model {
         $this->load->database();
     }
 
-    //返回查询结果，按时间从近到远排序
-    public function get_course_data()
+
+    //返回分页显示的所有课程通知，按时间从近到远排序
+    public function course_data($limit, $offset)
     {
-        $data = array
-        (
-            'course' => $this->session->userdata('course')
-        );
+        $course = $this->session->userdata('course');
 
         $this->db->order_by('datetime', 'desc');
-
-        $query = $this->db->get_where('notice',array('course' => $data['course']));
+        $this->db->where('course', $course);
+        $query = $this->db->get('notice', $limit, $offset);
 
         return $query;
     }
 
-    public function get_home_data()
+    //返回课程通知的总数
+    public function course_data_sum()
+    {
+        $course = $this->session->userdata('course');
+
+        $this->db->where('course', $course);
+        $sum = $this->db->count_all_results('notice');
+
+        return $sum;
+    }
+
+    //返回课程通知查询结果，按时间从近到远排序
+    public function course_search($search, $limit, $offset)
+    {
+        $course = $this->session->userdata('course');
+
+        $this->db->order_by('datetime', 'desc');
+        $this->db->like('title', $search);
+        $this->db->where('course', $course);
+        $query = $this->db->get('notice', $limit, $offset);
+        
+        return $query;
+    }
+
+    //返回课程通知查询结果总数
+    public function course_search_sum($search)
+    {
+        $course = $this->session->userdata('course');
+
+        $this->db->like('title', $search);
+        $this->db->where('course', $course);
+        $sum = $this->db->count_all_results('notice');
+
+        return $sum;
+    }
+
+    //返回分页显示的所有主页通知，按时间从近到远排序
+    public function home_data($limit, $offset)
     {   
         $this->db->order_by('datetime', 'desc');
-        $query = $this->db->get_where('notice',array('inhome' => 1));
+        $this->db->where('inhome', 1);
+        $query = $this->db->get('notice', $limit, $offset);
 
         return $query;
+    }
+
+    //返回主页通知的总数
+    public function home_data_sum()
+    {   
+        $this->db->where('inhome', 1);
+        $sum = $this->db->count_all_results('notice');
+
+        return $sum;
+    }
+
+    //返回主页通知查询结果，按时间从近到远排序
+    public function home_search($search, $limit, $offset)
+    {           
+        $this->db->order_by('datetime', 'desc');
+        $this->db->like('title', $search);
+        $this->db->where('inhome', 1);
+        $query = $this->db->get('notice', $limit, $offset);
+
+        return $query;
+    }
+
+    //返回主页通知查询结果总数
+    public function home_search_sum($search)
+    {   
+        $this->db->like('title', $search);
+        $this->db->where('inhome', 1);
+        $sum = $this->db->count_all_results('notice');
+
+        return $sum;
     }
 
     //查询某一条消息
@@ -52,8 +118,8 @@ class Notice_model extends CI_Model {
         }
 
         date_default_timezone_set('ETC/GMT-8');
-        $date = strftime('%Y-%m-%d',time());
-        $datetime = strftime('%Y-%m-%d %H:%M:%S',time());
+        $date = strftime('%Y-%m-%d', time());
+        $datetime = strftime('%Y-%m-%d %H:%M:%S', time());
 
 
         $data = array
@@ -99,8 +165,8 @@ class Notice_model extends CI_Model {
         }
 
         date_default_timezone_set('ETC/GMT-8');
-        $date = strftime('%Y-%m-%d',time());
-        $datetime = strftime('%Y-%m-%d %H:%M:%S',time());
+        $date = strftime('%Y-%m-%d', time());
+        $datetime = strftime('%Y-%m-%d %H:%M:%S', time());
 
 
         $data = array
@@ -108,7 +174,7 @@ class Notice_model extends CI_Model {
             'userid' => $this->session->userdata('userid'),
             'role' => $this->session->userdata('role')
         );        
-        $query = $this->db->get_where('users',array('userid' => $data['userid'], 'role' => $data['role']));
+        $query = $this->db->get_where('users', array('userid' => $data['userid'], 'role' => $data['role']));
         $username = $query->first_row()->name;
 
         $data = array
@@ -121,7 +187,7 @@ class Notice_model extends CI_Model {
             'date' => $date,
             'datetime' => $datetime
         );
-        $this->db->update('notice',$data,array('course' => $course, 'nid' => $nid));        
+        $this->db->update('notice', $data, array('course' => $course, 'nid' => $nid));        
     }
 
     //删除数据
