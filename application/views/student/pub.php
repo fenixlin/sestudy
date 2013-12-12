@@ -4,8 +4,8 @@
         <div id="sidebar">
           <ul class="nav nav-list">
             <li class="nav-header">导航</li>
-            <li><a href="<?=site_url()?>intro.html">课程介绍</a></li>
-            <li class="active"><a href="<?=site_url()?>outline.html">课程大纲</a></li>
+            <li class="active"><a href="<?=site_url()?>intro.html">课程介绍</a></li>
+            <li><a href="<?=site_url()?>outline.html">课程大纲</a></li>
             <li><a href="<?=site_url()?>tinfo.html">教师介绍</a></li>
             <li class="divider"></li>
             <li><a href="<?=site_url()?>account.html">学生账号管理</a></li>
@@ -21,24 +21,26 @@
           </ul>
         </div> <!-- sidebar -->
       </div> <!-- sidecontent -->
-
+	  
       <div id="maincontent" class="span9">
-        <?php $data = $this->outline_model->get_data();?>
-        <a class="btn btn-primary" href="<?=site_url()?>outline/edit.html"><i class="icon-edit icon-white"></i> 编辑</a>
-        <hr>
-        <div><h3>一、教学目标</h3></div>
-        <?=$data->target?>
-        <hr>
-        <div><h3>二、课程要求</h3></div>
-        <?=$data->requirement?>
-        <hr>
-        <div><h3>三、教学与实践安排</h3></div>
-        <?=$data->arrangement?>
-        <hr>
-        <div><h3>四、参考教材及相关资料</h3></div>
-        <?=$data->recommendation?>
-        
+	   <?php $data = $this->recourse_model->pub_downtable();?>
+	   <?php $i = 1; ?>
+       <table class="table table-hover" style="border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;border-bottom: 1px solid #dddddd;border-collapse: separate;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;">
+          <tbody>
+            <tr class="info">
+              <td style="width:30%"><strong>文件名</strong></td>
+              <td width =12%><strong>上传人</strong></td>
+			  <td width =12%><strong>日期</strong></td>
+            </tr>
+			<?php foreach($data as $key => $value) { ?>
+			<tr>
+              <td><?=$data[$key]->filename_see?></td>
+              <td><?=$data[$key]->userid?></td>
+			  <td><?=$data[$key]->uploaddate?></td>
+            </tr>
+			<?php } ?>
+          </tbody>
+        </table>
       </div> <!-- main content -->
     </div> <!-- row-fluid -->
   </div> <!-- content -->
-

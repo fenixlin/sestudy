@@ -293,6 +293,21 @@ INSERT INTO `users` (`userid`, `password`, `role`, `email`, `name`, `major`, `te
 ('ta', 'ta', 'A', NULL, '测试员A', NULL, NULL, NULL, NULL),
 ('teacher', 'teacher', 'T', '', NULL, '', '', '', '');
 
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `recourse`
+--
+
+CREATE TABLE IF NOT EXISTS `recourse` (
+  `userid` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `filename_see` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `filename` varchar(40) CHARACTER SET utf8 NOT NULL,
+  `uploaddate` date NOT NULL,
+  `downcount` int(8) DEFAULT 0,
+  PRIMARY KEY (`filename`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
