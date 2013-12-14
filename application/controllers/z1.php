@@ -8,9 +8,10 @@ class Z1 extends CI_Controller {
         parent::__construct();
     }
 	
-	public function index()
+	public function index($file_name)
     {
-        echo "1111";
+		$this->load->model('recourse_model');
+		$this -> recourse_model->douwncount_plus($file_name);
     }
 }
 ?>

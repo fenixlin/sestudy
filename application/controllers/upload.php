@@ -19,6 +19,13 @@ class Upload extends CI_Controller {
             $this->load->view('teacher/upload');
             $this->load->view('footer');
 		}
+		else if ($role == "A")
+		{
+		    $this->load->view('htmlhead');
+            $this->load->view('assistant/course_header');
+            $this->load->view('assistant/upload');
+            $this->load->view('footer');
+		}
 	}
 	
 	public function up()
@@ -28,7 +35,7 @@ class Upload extends CI_Controller {
 			$file = $_FILES['upfile'];
 			//var_dump($_FILES['upfile']);
 			//判断文件大小
-			if($file['size'] >= 200000)
+			if($file['size'] >= 20000000)  //20M
 			{
 				echo "<script>alert('文件过大')</script>";
 	            echo "<script>location.href='/sestudy/index.php/upload';</script>";
