@@ -30,6 +30,7 @@ class Upload extends CI_Controller {
 	
 	public function up()
 	{
+		//echo $this->input->post('information');
 	    if(!empty($_POST['sub']))
 		{
 			$file = $_FILES['upfile'];
@@ -52,10 +53,12 @@ class Upload extends CI_Controller {
 				$up_time = time();
 				$time=date("Y-n-d");
 				$userid = $this->session->userdata('userid');
-				$filename1 =iconv("UTF-8","GBK",$filename); //编码转换函数，防止乱码
-				move_uploaded_file($file['tmp_name'],"./upload/{$up_time}{$filename1}");
+				$information = $this->input->post('information');
+				$filename2 = urlencode($filename);
+				//$filename1 =iconv("UTF-8","GBK",$filename); //编码转换函数，防止乱码
+				move_uploaded_file($file['tmp_name'],"./upload/{$up_time}{$filename2}");
 				
-				$arr = array('userid'=>$userid,'filename_see'=>$filename,'filename'=>$up_time.$filename,'uploaddate'=>$time);
+				$arr = array('userid'=>$userid,'filename_see'=>$filename,'filename'=>$up_time.$filename2,'uploaddate'=>$time,'information'=>$information);
 				$this -> recourse_model->recourse_insert($arr);
 				echo "<script>alert('文件上传成功')</script>";
 	            echo "<script>location.href='/sestudy/index.php/upload';</script>";

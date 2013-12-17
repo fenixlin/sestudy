@@ -19,6 +19,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- 数据库: `sestudy`
 --
 
+DROP DATABASE IF EXISTS `sestudy`;
+CREATE DATABASE IF NOT EXISTS `sestudy` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `sestudy`;
+
 -- --------------------------------------------------------
 
 --
@@ -136,8 +140,9 @@ INSERT INTO `outline` (`course`, `target`, `requirement`, `arrangement`, `recomm
 CREATE TABLE IF NOT EXISTS `recourse` (
   `userid` varchar(20) NOT NULL,
   `filename_see` varchar(30) NOT NULL,
-  `filename` varchar(40) NOT NULL,
+  `filename` varchar(80) NOT NULL,
   `uploaddate` date NOT NULL,
+  `information` varchar(200) DEFAULT ' ',
   `downcount` int(8) DEFAULT '0',
   PRIMARY KEY (`filename`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -146,6 +151,8 @@ CREATE TABLE IF NOT EXISTS `recourse` (
 -- 转存表中的数据 `recourse`
 --
 
+INSERT INTO `recourse` (`userid`, `filename_see`, `filename`, `uploaddate`, `information`, `downcount`) VALUES
+('teacher', 'picture.jpg', '1387303400picture.jpg', '2013-12-17', '你好，这是图片', 0);
 
 -- --------------------------------------------------------
 

@@ -18,7 +18,22 @@
 			  <td><?=$data[$key]->uploaddate?></td>
 			  <td><?=$data[$key]->downcount?></td>
 			  <td>
-			  <a href="<?=site_url()?>pub/download/<?=$data[$key]->filename?>"><i class="icon-download-alt"></i></a>
+			  <a href="#myModal<?=$key?>" data-toggle="modal"><i class="icon-download-alt"></i></a>
+				<div id="myModal<?=$key?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h3 id="myModalLabel"><?=$data[$key]->filename_see?></h3>
+					</div>
+					
+					<div class="modal-body">
+						<h4>简介：</h4>
+						<h5><small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?=$data[$key]->information?></small></h5>
+					</div>
+					<div class="modal-footer">
+						<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+						<a href="<?=site_url()?>pub/download/<?=$data[$key]->filename?>" role="button" class="btn btn-primary">下载</a>
+					</div>
+				</div>
 			  </td>
             </tr>
 			<?php } ?>
@@ -27,3 +42,5 @@
       </div> <!-- main content -->
     </div> <!-- row-fluid -->
   </div> <!-- content -->
+  
+  

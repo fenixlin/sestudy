@@ -21,12 +21,28 @@
           </ul>
         </div> <!-- sidebar -->
       </div> <!-- sidecontent -->
+	  
 
       <div id="maincontent" class="span9">
-        <form action="/sestudy/index.php/upload/up" method="post" enctype="multipart/form-data">
-		    <input type="file" name="upfile">
-			<input type="submit" name="sub" value="提交" />
+		<a href="#myModal" role="button" class="btn btn-primary btn-lg" data-toggle="modal">上传文件</a>
+		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">上传文件</h3>
+			</div>
+			<form action="/sestudy/index.php/upload/up" method="post" enctype="multipart/form-data">
+				&nbsp&nbsp&nbsp&nbsp<input type="file" name="upfile">
+
+			<div class="modal-body">
+				<textarea id="information" name="information" placeholder="简介"></textarea>
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+				<input type="submit" class="btn btn-primary" name="sub" value="提交" />
+			</div>
+			</form>
 		</form>
+		</div>
       </div> <!-- main content -->
     </div> <!-- row-fluid -->
   </div> <!-- content -->
