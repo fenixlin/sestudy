@@ -29,13 +29,13 @@ class Forum extends CI_Controller
         $class_id = 1;
         $group_id = 1;
 
-        if($this->input->post('content') == false)
+        if($this->input->post('new_content') == false)
         {
             $this->load->view('submit');
         }
         else
         {
-            $content = $this->input->post('content');
+            $content = $this->input->post('new_content');
             $author_id = $userid;
             $time = time();
             $data = array(
@@ -59,7 +59,7 @@ class Forum extends CI_Controller
         $class_id = 1;
         $group_id = 1;
 
-        if($this->input->post('content') == false)
+        if($this->input->post('new_content') == false)
         {
             $data = array('topic_id' => $topic_id);
             $this->load->view('reply', $data);
@@ -69,7 +69,7 @@ class Forum extends CI_Controller
 
             if($this->Forum_model->exist_topic_id($topic_id) == true)
             {
-                $content = $this->input->post('content');
+                $content = $this->input->post('new_content');
                 $author_id = $userid;
                 $time = time();
                 $data = array(

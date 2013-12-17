@@ -8,6 +8,7 @@ class Forum_model extends CI_Model
     }
     public function getTopicAndComment()
     {
+        $this->db->order_by("time", "desc"); 
         $topic_array = $this->db->get('Topic');
         
         if($topic_array->num_rows() == 0)
@@ -18,6 +19,7 @@ class Forum_model extends CI_Model
         foreach($topic_array as &$topic_var)
         {
             $this->db->where('topic_id', $topic_var['topic_id']);
+            $this->db->order_by("time", "desc"); 
             $comment_array = $this->db->get('TopicComment');
             $comment_array = $comment_array->result_array();
 
