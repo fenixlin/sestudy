@@ -33,5 +33,18 @@ class Recourse_model extends CI_Model
 		$this ->db->update('recourse',$arr);
 		
 	}
+	
+	public function see_upload($userid)
+	{
+		$sql = "SELECT * FROM recourse WHERE userid = '";
+		$query = $this->db->query($sql.$userid."'");
+		return $query->result();
+	}
+	
+	public function delete_file($filename)
+	{
+		$sql = "DELETE FROM recourse WHERE filename = '";
+		$this->db->query($sql.$filename."'");
+	}
 }
 ?>

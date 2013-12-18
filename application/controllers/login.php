@@ -30,7 +30,8 @@ class Login extends CI_Controller {
                 (
                     //存储为游客身份
                     'userid' => "anonymous",
-                    'role' => "V"
+                    'role' => "V",
+					'name' => "游客"
                 );
                 //存储session
                 $this->session->set_userdata($sessiondata);
@@ -44,10 +45,13 @@ class Login extends CI_Controller {
             if ($this->input->post('go')=="登陆")
             {
                 //用户验证成功，提取需要的session信息
+				$data = $this->login_model->getname($this->input->post('userid'));
+				$name = $data[0]->name;
                 $sessiondata = array
                 (
                     'userid' => $this->input->post('userid'),
-                    'role' => $this->input->post('role')
+                    'role' => $this->input->post('role'),
+					'name' => $name
                     //'userid' => $this->login_model->getid()
                 );
             }
@@ -57,7 +61,8 @@ class Login extends CI_Controller {
                 $sessiondata = array
                 (
                     'userid' => "anonymous",
-                    'role' => "V"
+                    'role' => "V",
+					'name' => "游客"
                     //'userid' => $this->login_model->getid()
                 );
             }

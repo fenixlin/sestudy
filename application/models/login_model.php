@@ -20,6 +20,13 @@ class Login_model extends CI_Model {
         if ($query->num_rows()>0) return TRUE;
         else return FALSE;
     }
+	
+	public function getname($id){
+		$sql = "SELECT * FROM users WHERE userid = '";
+		
+		$query = $this->db->query($sql.$id."'");
+		return $query->result();
+	}
 }
 
 

@@ -53,14 +53,15 @@ class Upload extends CI_Controller {
 				$up_time = time();
 				$time=date("Y-n-d");
 				$userid = $this->session->userdata('userid');
+				$name = $this->session->userdata('name');
 				$information = $this->input->post('information');
 				$filename2 = urlencode($filename);
 				//$filename1 =iconv("UTF-8","GBK",$filename); //编码转换函数，防止乱码
-				move_uploaded_file($file['tmp_name'],"./upload/{$up_time}{$filename2}");
+				move_uploaded_file($file['tmp_name'],"./upload/recourse/{$up_time}{$filename2}");
 				
-				$arr = array('userid'=>$userid,'filename_see'=>$filename,'filename'=>$up_time.$filename2,'uploaddate'=>$time,'information'=>$information);
+				$arr = array('userid'=>$userid,'name' =>$name,'filename_see'=>$filename,'filename'=>$up_time.$filename2,'uploaddate'=>$time,'information'=>$information);
 				$this -> recourse_model->recourse_insert($arr);
-				echo "<script>alert('文件上传成功')</script>";
+				echo "<script>alert('上传成功')</script>";
 	            echo "<script>location.href='/sestudy/index.php/upload';</script>";
 			}
 		}
@@ -69,6 +70,23 @@ class Upload extends CI_Controller {
 			//错误
 			echo "wrong";
 		}
+	}
+	
+	public function delete_up($filename)
+	{
+		$this->recourse_model->delete_file($filename);
+		chmod(dirname(dirname(dirname(__FILE__)))."/upload/recourse", 0777);  //更改权限
+		unlink(dirname(dirname(dirname(__FILE__)))."/upload/recourse/".$filename);
+		echo "<script>alert('删除成功')</script>";
+	    echo "<script>location.href='/sestudy/index.php/upload';</script>";
+	}
+	
+	public function reup($filename)
+	{
+		$this->recourse_model->delete_file($filename);
+		chmod(dirname(dirname(dirname(__FILE__)))."/upload/recourse", 0777);  //更改权限
+		unlink(dirname(dirname(dirname(__FILE__)))."/upload/recourse/".$filename);
+		$this -> up();
 	}
 }
 

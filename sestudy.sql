@@ -139,10 +139,11 @@ INSERT INTO `outline` (`course`, `target`, `requirement`, `arrangement`, `recomm
 
 CREATE TABLE IF NOT EXISTS `recourse` (
   `userid` varchar(20) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
   `filename_see` varchar(30) NOT NULL,
   `filename` varchar(80) NOT NULL,
   `uploaddate` date NOT NULL,
-  `information` varchar(200) DEFAULT ' ',
+  `information` varchar(200) DEFAULT '无',
   `downcount` int(8) DEFAULT '0',
   PRIMARY KEY (`filename`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -151,8 +152,8 @@ CREATE TABLE IF NOT EXISTS `recourse` (
 -- 转存表中的数据 `recourse`
 --
 
-INSERT INTO `recourse` (`userid`, `filename_see`, `filename`, `uploaddate`, `information`, `downcount`) VALUES
-('teacher', 'picture.jpg', '1387303400picture.jpg', '2013-12-17', '你好，这是图片', 0);
+INSERT INTO `recourse` (`userid`,`name`, `filename_see`, `filename`, `uploaddate`, `information`, `downcount`) VALUES
+('teacher','刑卫', 'picture.jpg', '1387303400picture.jpg', '2013-12-17', '你好，这是图片', 0);
 
 -- --------------------------------------------------------
 
@@ -298,4 +299,4 @@ INSERT INTO `users` (`userid`, `password`, `role`, `email`, `name`, `major`, `te
 ('123', '123', 'T', NULL, '测试员', NULL, NULL, NULL, NULL),
 ('student', 'student', 'S', 'student@zju.edu.cn', '某某', '计算机科学与技术', '18868813800', '三点一四一五九二六', '5358979'),
 ('ta', 'ta', 'A', NULL, '测试员A', NULL, NULL, NULL, NULL),
-('teacher', 'teacher', 'T', '', NULL, '', '', '', '');
+('teacher', 'teacher', 'T', '', '刑卫', '', '', '', '');

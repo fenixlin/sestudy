@@ -48,7 +48,7 @@ class Pub extends CI_Controller {
 		//$file_name="c.jpg"; 
 		//用以解决中文不能显示出来的问题 
 		$file_name=iconv("utf-8","gb2312",$file_name); 
-		$file_sub_path=dirname(dirname(dirname(__FILE__)))."/upload/"; 
+		$file_sub_path=dirname(dirname(dirname(__FILE__)))."/upload/recourse/"; 
 		$file_path=$file_sub_path.$file_name; 
 		//首先要判断给定的文件存在与否 
 		if(!file_exists($file_path)){ 

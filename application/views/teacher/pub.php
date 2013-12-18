@@ -9,12 +9,13 @@
               <td width =13%><strong>上传人</strong></td>
 			  <td width =13%><strong>日期</strong></td>
 			  <td width =13%><strong>下载次数</strong></td>
+			  <?php //echo $this->session->userdata('name');?>
 			  <td></td>
             </tr>
 			<?php foreach($data as $key => $value) { ?>
 			<tr>
               <td><?=$data[$key]->filename_see?></td>
-              <td><?=$data[$key]->userid?></td>
+              <td><?=$data[$key]->name?></td>
 			  <td><?=$data[$key]->uploaddate?></td>
 			  <td><?=$data[$key]->downcount?></td>
 			  <td>
