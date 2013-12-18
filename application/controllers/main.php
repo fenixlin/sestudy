@@ -9,7 +9,7 @@ class Main extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('pagination');
         //下面一行输出调试信息
-        $this->output->enable_profiler(TRUE);
+        //$this->output->enable_profiler(TRUE);
     }
 
     public function index()

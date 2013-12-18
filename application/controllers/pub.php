@@ -15,28 +15,28 @@ class Pub extends CI_Controller {
 		if ($role == "S")
 		{
 			$this->load->view('htmlhead');
-            $this->load->view('student/course_header');
+            $this->load->view('student/pub_header');
             $this->load->view('student/pub');
             $this->load->view('footer');
 		}
 		else if ($role == "T")
 		{
 		    $this->load->view('htmlhead');
-            $this->load->view('teacher/course_header');
+            $this->load->view('teacher/pub_header');
             $this->load->view('teacher/pub');
             $this->load->view('footer');
 		}
 		else if ($role == "A")
 		{
 		    $this->load->view('htmlhead');
-            $this->load->view('assistant/course_header');
+            $this->load->view('assistant/pub_header');
             $this->load->view('assistant/pub');
             $this->load->view('footer');
 		}
 		else if ($role == "V")
 		{
 		    $this->load->view('htmlhead');
-            $this->load->view('visitor/course_header');
+            $this->load->view('visitor/pub_header');
             $this->load->view('visitor/pub');
             $this->load->view('footer');
 		}

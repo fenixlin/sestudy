@@ -45,6 +45,7 @@ form:before {
 }
 
 .inset {
+  height:260px;
   padding:20px; 
   border-top:1px solid #19191a;
 }
@@ -120,11 +121,16 @@ input[type=radio] {
   content:"";
 }
 
-.p-container span {
+.p-container a {
   display:block;
   float:left;
   color:#0d93ff;
   padding-top:8px;
+  text-decoration:none;
+}
+
+.p-container a:hover {
+  text-decoration:underline;
 }
 
 input[type=submit] {
@@ -171,8 +177,8 @@ label:hover ~ input[type=password] {
 }
 
 .alert p{
-  /*margin-left: 20px;*/
-  /*margin-right: 20px;*/
+  margin-left: 20px;
+  margin-right: 20px;
   padding:8px 35px 8px 14px;
   margin-top:10px;
   text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);

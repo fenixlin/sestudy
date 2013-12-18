@@ -7,7 +7,7 @@ class Prof extends CI_Controller {
         parent::__construct();
         $this->load->model('prof_model');
         //下面一行输出调试信息
-        $this->output->enable_profiler(TRUE);
+        //$this->output->enable_profiler(TRUE);
     }
 
     public function index()

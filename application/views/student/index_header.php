@@ -27,14 +27,6 @@
           </li>
         </ul>
       </div> <!-- topnav -->
-      <div id="search">
-        <?php echo form_open('search'); ?>
-          <fieldset>
-            <input type="text" value="Search Website&hellip;"  onfocus="this.value=(this.value=='Search Website&hellip;')? '' : this.value ;" />
-            <input type="submit" name="go" id="go" value="搜索" />
-          </fieldset>
-        </form>
-      </div> <!-- search -->
       <br class="clear" />
     </div> <!-- topbar -->
   </div> <!-- topnavbar -->
