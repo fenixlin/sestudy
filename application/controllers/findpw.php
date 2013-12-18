@@ -43,8 +43,19 @@ class Findpw extends CI_Controller {
         }
         else if ($this->input->post('formid') == "2")
         {
-            //这里还木有写完
-            redirect("/login","refresh");
+            if ($this->findpw_model->validans($this->input->post('userid'), $this->input->post('ans')))
+            {
+            	$this->session->set_flashdata('successmsg', "<p>密码重置成功</p>");
+            	$this->findpw_model->resetpw($this->input->post('userid'));
+            	redirect("/login","refresh");	
+            }
+            else
+            {
+            	$data['message']="密码找回问题错误";
+            	$ques = $this->findpw_model->getques($this->input->post('userid'));
+            	$data['ques']=$ques;
+            	$this->load->view('findpw2', $data);
+            }
         }
     }
 }

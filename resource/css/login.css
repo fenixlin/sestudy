@@ -190,4 +190,17 @@ label:hover ~ input[type=password] {
   border-radius:4px;
 }
 
+.success p{
+  margin-left: 20px;
+  margin-right: 20px;
+  padding:8px 35px 8px 14px;
+  margin-top:10px;
+  text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color:#dff0d8;
+  border:1px solid #d6e9c6;
+  color:#468847;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+}
 

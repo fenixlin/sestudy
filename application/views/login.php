@@ -11,7 +11,8 @@
     <?php echo form_open('login', array('id' => 'myform')); ?>
       <h1>欢迎进入&nbsp;软件工程学习网</h1>
       <!--显示错误信息-->
-      <div class="alert"><?php echo validation_errors(); ?></div>      
+      <div class="alert"><?php echo validation_errors(); ?></div> 
+      <div class="success"><?php echo $this->session->flashdata('successmsg'); ?></div>      
       <div class="inset">
         <!--输入区域-->
         <p>
