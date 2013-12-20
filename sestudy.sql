@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2013 年 12 月 17 日 06:30
+-- 生成日期: 2013 年 12 月 20 日 02:27
 -- 服务器版本: 5.1.44
 -- PHP 版本: 5.3.1
 
@@ -18,10 +18,6 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- 数据库: `sestudy`
 --
-
-DROP DATABASE IF EXISTS `sestudy`;
-CREATE DATABASE IF NOT EXISTS `sestudy` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `sestudy`;
 
 -- --------------------------------------------------------
 
@@ -152,8 +148,8 @@ CREATE TABLE IF NOT EXISTS `recourse` (
 -- 转存表中的数据 `recourse`
 --
 
-INSERT INTO `recourse` (`userid`,`name`, `filename_see`, `filename`, `uploaddate`, `information`, `downcount`) VALUES
-('teacher','刑卫', 'picture.jpg', '1387303400picture.jpg', '2013-12-17', '你好，这是图片', 0);
+INSERT INTO `recourse` (`userid`, `name`, `filename_see`, `filename`, `uploaddate`, `information`, `downcount`) VALUES
+('teacher', '刑卫', 'picture.jpg', '1387303400picture.jpg', '2013-12-17', '你好，这是图片', 0);
 
 -- --------------------------------------------------------
 
@@ -232,71 +228,40 @@ INSERT INTO `tinfo` (`course`, `info`) VALUES
 
 CREATE TABLE IF NOT EXISTS `Topic` (
   `topic_id` int(8) NOT NULL AUTO_INCREMENT,
-  `author_id` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `author_id` varchar(20) DEFAULT NULL,
   `class_id` int(8) DEFAULT NULL,
   `group_id` int(8) DEFAULT NULL,
   `number_of_comment` int(4) DEFAULT NULL,
   `time` int(16) DEFAULT NULL,
-  `content` text CHARACTER SET utf8,
+  `content` text,
+  `noname` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`topic_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- 转存表中的数据 `Topic`
 --
 
-INSERT INTO `Topic` (`topic_id`, `author_id`, `class_id`, `group_id`, `number_of_comment`, `time`, `content`) VALUES
-(13, 'student', 1, 1, 3, 1387261444, '这是一个测试');
+INSERT INTO `Topic` (`topic_id`, `author_id`, `class_id`, `group_id`, `number_of_comment`, `time`, `content`, `noname`) VALUES
+(13, 'student', 1, 1, 3, 1387261444, '这是一个测试', 0);
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `TopicComment`
+-- 表的结构 `Topic_Comment`
 --
 
-CREATE TABLE IF NOT EXISTS `TopicComment` (
+CREATE TABLE IF NOT EXISTS `Topic_Comment` (
   `comment_id` int(8) NOT NULL AUTO_INCREMENT,
   `topic_id` int(8) DEFAULT NULL,
-  `author_id` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `author_id` varchar(20) DEFAULT NULL,
   `time` int(16) DEFAULT NULL,
-  `content` text CHARACTER SET utf8,
+  `content` text,
+  `noname` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`comment_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- 转存表中的数据 `TopicComment`
+-- 转存表中的数据 `Topic_Comment`
 --
 
-INSERT INTO `TopicComment` (`comment_id`, `topic_id`, `author_id`, `time`, `content`) VALUES
-(23, 13, 'student', 1387261510, 'こんにちは'),
-(22, 13, 'student', 1387261462, '这是另外一个测试'),
-(24, 13, 'student', 1387261700, '안녕하세요');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `users`
---
-
-CREATE TABLE IF NOT EXISTS `users` (
-  `userid` varchar(20) NOT NULL,
-  `password` varchar(60) NOT NULL,
-  `role` char(1) NOT NULL,
-  `email` varchar(60) DEFAULT NULL,
-  `name` varchar(30) DEFAULT NULL,
-  `major` varchar(60) DEFAULT NULL,
-  `tel` varchar(15) DEFAULT NULL,
-  `ques` varchar(200) DEFAULT NULL,
-  `answer` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `users`
---
-
-INSERT INTO `users` (`userid`, `password`, `role`, `email`, `name`, `major`, `tel`, `ques`, `answer`) VALUES
-('123', '123', 'T', NULL, '测试员', NULL, NULL, NULL, NULL),
-('student', 'student', 'S', 'student@zju.edu.cn', '某某', '计算机科学与技术', '18868813800', '三点一四一五九二六', '5358979'),
-('ta', 'ta', 'A', NULL, '测试员A', NULL, NULL, NULL, NULL),
-('teacher', 'teacher', 'T', '', '刑卫', '', '', '', '');

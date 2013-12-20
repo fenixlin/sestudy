@@ -20,7 +20,7 @@ class Forum_model extends CI_Model
         {
             $this->db->where('topic_id', $topic_var['topic_id']);
             $this->db->order_by("time", "desc"); 
-            $comment_array = $this->db->get('TopicComment');
+            $comment_array = $this->db->get('Topic_Comment');
             $comment_array = $comment_array->result_array();
 
             array_push($topic_var, $comment_array);
@@ -29,7 +29,7 @@ class Forum_model extends CI_Model
         //die(print_r($topic_array));
         
         /*
-        $query = "SELECT * from Topic, TopicComment where Topic.topic_id = TopicComment.topic_id";
+        $query = "SELECT * from Topic, Topic_Comment where Topic.topic_id = Topic_Comment.topic_id";
         $topic_array = $this->db->query($query);
         $topic_array = $topic_array -> result_array();
         */
@@ -44,7 +44,7 @@ class Forum_model extends CI_Model
 
     public function insert_comment($insert_data)
     {
-        return $this->db->insert('TopicComment', $insert_data);
+        return $this->db->insert('Topic_Comment', $insert_data);
     }
 
     public function increment_num_of_comment($topic_id)
