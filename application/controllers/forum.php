@@ -18,7 +18,6 @@ class Forum extends CI_Controller
         $this->load->view('student/course_header');
         $this->load->view('forum', $data);
         $this->load->view('footer');
-        
     }
 
     public function submit()
@@ -44,7 +43,8 @@ class Forum extends CI_Controller
                 'group_id' => $group_id,
                 'time' => $time,
                 'number_of_comment' => 0,
-                'content' => $content);
+                'content' => $content,
+                'noname' => $this->input->post('noname'));
             $this->Forum_model->insert_topic($data);
 
             header('Location: '.site_url('forum/index').'');
@@ -76,7 +76,8 @@ class Forum extends CI_Controller
                     'topic_id' => $topic_id,
                     'author_id' => $author_id,
                     'time' => $time,
-                    'content' => $content
+                    'content' => $content,
+                    'noname' => $this->input->post('noname')
                     );
                 $this->Forum_model->insert_comment($data);
                 $this->Forum_model->increment_num_of_comment($topic_id);

@@ -35,6 +35,7 @@
     <form action = <?php echo site_url('forum/submit')?> method = "post">
       <div class="modal-body">
       <textarea id="new_content" name="new_content"></textarea>
+      <input id="noname" name="noname" type="checkbox" value="1">匿名</input>
       </div>
       <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
@@ -62,7 +63,10 @@ foreach ($topic_array as $topic) {
     echo '</div>';
     
     echo '<div class="row-fluid">';
-    echo '<div class="span12" align="right">'.date("Y/m/d H:i:s", $topic['time']).'，'.$topic['author_id'].'</div>';
+    if($topic['noname'] == false)
+      echo '<div class="span12" align="right">'.date("Y/m/d H:i:s", $topic['time']).'，'.$topic['author_id'].'</div>';
+    else
+      echo '<div class="span12" align="right">'.date("Y/m/d H:i:s", $topic['time']).'，匿名</div>';
     echo '</div>';
     
     echo '<div class="row-fluid">';
@@ -97,8 +101,9 @@ foreach ($topic_array as $topic) {
 <?php
     echo '<div class="row-fluid" style="border-bottom-width: 2px;border-bottom-style: solid;border-bottom-color: gray;">';
     echo '<form action='.site_url('forum/reply/'.$topic['topic_id']).' method = "post">';
-    echo '<div class="span8"><textarea id="new_content" name="new_content" placeholder="输入你的评论..." style="height:20px;width:580px"></textarea></div>';
-    echo '<div class="span4" align="right"><input class="btn btn-primary" type = "submit" value="回复"></div>';
+    echo '<div class="span10"><textarea id="new_content" name="new_content" placeholder="输入你的评论..." style="height:20px;width:560px"></textarea></div>';
+    echo '<div class="span1"><input id="noname" name="noname" type="checkbox" value="1">匿名</input></div>';
+    echo '<div class="span1" align="right"><input class="btn btn-primary" type = "submit" value="回复"></div>';
     echo '</form>';
     echo '</div>';
     //打印评论
@@ -111,7 +116,10 @@ foreach ($topic_array as $topic) {
         echo '<div class="span12"><h5>'.$comment['content'].'</h5></div>';
         echo '</div>';
         echo '<div class="row-fluid" style="border-bottom-width: 2px;border-bottom-style: solid;border-bottom-color: gray;">';
-        echo '<div class="span12" align="right">'.date("Y/m/d H:i:s", $comment['time']).'，'.$comment['author_id'].'</div>';
+        if($comment['noname'] == false)
+          echo '<div class="span12" align="right">'.date("Y/m/d H:i:s", $comment['time']).'，'.$comment['author_id'].'</div>';
+        else
+          echo '<div class="span12" align="right">'.date("Y/m/d H:i:s", $comment['time']).'，匿名</div>';
         echo '</div>';
         /*  foreach ($comment as $key => $value) 
           {
