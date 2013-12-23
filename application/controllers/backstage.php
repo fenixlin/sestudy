@@ -11,14 +11,8 @@ class Backstage extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('backstage/password');
-    }
-
-    public function mainpage()
-    {
         $this->load->view('backstage/mainpage');
     }
-
 
     public function teachers()
     {

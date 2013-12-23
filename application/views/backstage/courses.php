@@ -17,7 +17,7 @@
         	<div class="nav-collapse collapse">
         		<ul class="nav">
             	<li>
-                <a href="<?=site_url()?>backstage/mainpage.html">后台信息</a>
+                <a href="<?=site_url()?>backstage">后台信息</a>
             	</li>
             	<li>
                 <a href="<?=site_url()?>backstage/teachers.html">教师账户管理</a>
@@ -32,7 +32,7 @@
                 <a href="<?=site_url()?>backstage/courses.html">课程班级管理</a>
             	</li>
         		</ul>
-          	<a type="button" href="<?=site_url()?>main.html" style="float:right; display:block; padding:10px 20px 10px;">管理员登出</a>
+          	<a type="button" href="<?=site_url()?>main.html" style="float:right; display:block; padding:10px 20px 10px;">返回网站</a>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@
       </table>
 
 
-      <legend><strong>所有班级列表</strong><button class="btn-primary" style="float:right;">添加班级</button></legend>
+      <legend><strong>所有班级列表</strong><button class="btn btn-primary" style="float:right;">添加班级</button></legend>
       <table class="table table-hover">
         <tbody>
           <tr class="info">
@@ -157,6 +157,9 @@
           </tr>
         </tbody>        
       </table>
+
+      <legend><strong>所有讨论区列表</strong><button class="btn btn-primary" style="float:right;">添加讨论区</button></legend>
+      
   	</div>
 	</body>
 

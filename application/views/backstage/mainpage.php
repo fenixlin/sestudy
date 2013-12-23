@@ -17,7 +17,7 @@
         	<div class="nav-collapse collapse">
         		<ul class="nav">
             	<li class="active">
-                <a href="<?=site_url()?>backstage/mainpage.html">后台信息</a>
+                <a href="<?=site_url()?>backstage">后台信息</a>
             	</li>
             	<li>
                 <a href="<?=site_url()?>backstage/teachers.html">教师账户管理</a>
@@ -32,7 +32,7 @@
                 <a href="<?=site_url()?>backstage/courses.html">课程班级管理</a>
             	</li>
         		</ul>
-          	<a type="button" href="<?=site_url()?>main.html" style="float:right; display:block; padding:10px 20px 10px;">管理员登出</a>
+          	<a type="button" href="<?=site_url()?>main.html" style="float:right; display:block; padding:10px 20px 10px;">返回网站</a>
           </div>
         </div>
       </div>

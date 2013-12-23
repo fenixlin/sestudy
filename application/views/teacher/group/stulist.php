@@ -23,6 +23,7 @@
       </div> <!-- sidecontent -->
 
       <div id="maincontent" class="span9">
+<button class="btn" style="float:right; margin-right:10px;">从其他课程导入</button>       
         <legend><strong>班级学生列表</strong></legend>
       <table class="table table-hover">
         <tbody>

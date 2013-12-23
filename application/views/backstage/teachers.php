@@ -17,7 +17,7 @@
         	<div class="nav-collapse collapse">
         		<ul class="nav">
             	<li>
-                <a href="<?=site_url()?>backstage/mainpage.html">后台信息</a>
+                <a href="<?=site_url()?>backstage">后台信息</a>
             	</li>
             	<li class="active">
                 <a href="<?=site_url()?>backstage/teachers.html">教师账户管理</a>
@@ -32,7 +32,7 @@
                 <a href="<?=site_url()?>backstage/courses.html">课程班级管理</a>
             	</li>
         		</ul>
-          	<a type="button" href="<?=site_url()?>main.html" style="float:right; display:block; padding:10px 20px 10px;">管理员登出</a>
+          	<a type="button" href="<?=site_url()?>main.html" style="float:right; display:block; padding:10px 20px 10px;">返回网站</a>
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@
 
   <div class="container">
   	<div style="margin:0 auto 20px; padding:40px 60px 40px; min-height:400px; background-color:#fff; border: 1px solid #c5c5c5; -webkit-border-radius:10px; border-radius: 10px; -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1); box-shadow:0 1px 2px rgba(0,0,0,.1);">
-    	<legend><strong>所有教师列表</strong><button class="btn-primary" style="float:right;">添加教师</button></legend>
+    	<legend><strong>所有教师列表</strong><button class="btn btn-primary" style="float:right;">添加教师</button></legend>
     	<table class="table table-hover">
         <tbody>
           <tr class="info">
@@ -65,7 +65,7 @@
               1
             </td>
             <td style="width:25%">
-              测试员1
+              邢卫
             </td>
             <td style="width:25%">
               test1@a.com
@@ -83,7 +83,7 @@
               2
             </td>
             <td style="width:25%">
-              测试员2
+              金波
             </td>
             <td style="width:25%">
               test2@a.com
