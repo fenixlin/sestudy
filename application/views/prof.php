@@ -77,7 +77,7 @@
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="major">专业&nbsp;:</label>
+            <label class="control-label" for="major">所属学院与专业&nbsp;:</label>
             <div class="controls">
               <input class="input-xlarge" type="text" id="major" name="major" value="<?=$row->major?>">
             </div>

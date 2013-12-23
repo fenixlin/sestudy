@@ -8,10 +8,10 @@
             	<li>
                 <a href="<?=site_url()?>backstage">后台信息</a>
             	</li>
-            	<li class="active">
+            	<li>
                 <a href="<?=site_url()?>backstage/teachers.html">教师账户管理</a>
             	</li>
-            	<li>
+            	<li class="active">
                 <a href="<?=site_url()?>backstage/assistants.html">助教账户管理</a>
                 </li>
             	<li>
@@ -29,7 +29,7 @@
 
   <div class="container">
   	<div id="internal_container">
-    	<legend><strong>所有教师列表</strong><button class="btn btn-primary" style="float:right;">添加教师</button></legend>
+    	<legend><strong>所有助教列表</strong><button class="btn btn-primary" style="float:right;">添加教师</button></legend>
     	<table class="table table-hover wrapped">
         <tbody>
           <tr class="info">

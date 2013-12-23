@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2013 年 12 月 23 日 04:11
+-- 生成日期: 2013 年 12 月 23 日 16:24
 -- 服务器版本: 5.6.12-log
 -- PHP 版本: 5.4.16
 
@@ -29,20 +29,67 @@ USE `sestudy`;
 --
 
 CREATE TABLE IF NOT EXISTS `classes` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `courseid` int(11) NOT NULL,
   `coursename` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `term` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `time` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
-  `major` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `major` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- 转存表中的数据 `classes`
 --
 
 INSERT INTO `classes` (`id`, `courseid`, `coursename`, `term`, `time`, `major`) VALUES
-(1, 1, '软件需求分析与设计', '2013-2014秋冬学期', '周一上午3, 4, 5节', '软件工程');
+(1, 1, '软件需求分析与设计', '2013-2014秋冬学期', '周一上午3, 4, 5节', '软件工程'),
+(2, 1, '软件需求分析与设计', '2013-2014秋冬学期', '周一下午6, 7, 8节', '软件工程'),
+(3, 2, '项目管理与案例分析', '2013-2014秋冬学期', '周五上午1, 2节', '软件工程'),
+(4, 3, '软件测试与质量保证', '2013-2014秋冬学期', '周一下午9,10节;周四上午1,2节', '计算机科学与技术学院');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `courses`
+--
+
+CREATE TABLE IF NOT EXISTS `courses` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 转存表中的数据 `courses`
+--
+
+INSERT INTO `courses` (`id`, `name`) VALUES
+(1, '软件需求分析与设计'),
+(2, '项目管理与案例分析'),
+(3, '软件测试与质量保证');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `forum_relation`
+--
+
+CREATE TABLE IF NOT EXISTS `forum_relation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `forumid` int(11) NOT NULL,
+  `classid` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- 转存表中的数据 `forum_relation`
+--
+
+INSERT INTO `forum_relation` (`id`, `forumid`, `classid`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 3),
+(4, 3, 4);
 
 -- --------------------------------------------------------
 
@@ -201,28 +248,51 @@ INSERT INTO `stu_belong` (`userid`, `course`, `class`, `team`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `tch_ta_belong`
+-- 表的结构 `ta_belong`
 --
 
-CREATE TABLE IF NOT EXISTS `tch_ta_belong` (
+CREATE TABLE IF NOT EXISTS `ta_belong` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` varchar(20) DEFAULT NULL,
   `name` varchar(30) NOT NULL,
   `course` int(11) NOT NULL,
   `class` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- 转存表中的数据 `tch_ta_belong`
+-- 转存表中的数据 `ta_belong`
 --
 
-INSERT INTO `tch_ta_belong` (`id`, `userid`, `name`, `course`, `class`) VALUES
-(1, 'teacher', '', 1, 1),
-(2, 'teacher', '', 1, 2),
-(3, 'teacher', '', 2, 1),
-(4, 'ta', '', 1, 1),
-(5, 'ta', '', 1, 2);
+INSERT INTO `ta_belong` (`id`, `userid`, `name`, `course`, `class`) VALUES
+(1, 'ta', '郑外辉', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `tch_belong`
+--
+
+CREATE TABLE IF NOT EXISTS `tch_belong` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` varchar(20) DEFAULT NULL,
+  `name` varchar(30) NOT NULL,
+  `course` int(11) NOT NULL,
+  `class` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- 转存表中的数据 `tch_belong`
+--
+
+INSERT INTO `tch_belong` (`id`, `userid`, `name`, `course`, `class`) VALUES
+(1, 'teacher', '邢卫', 1, 1),
+(2, 'teacher', '邢卫', 1, 2),
+(3, 'teacher', '邢卫', 2, 1),
+(4, 'teacher2', '胡天磊', 1, 1),
+(5, 'teacher3', '刘玉生', 1, 2),
+(6, 'teacher4', '金波', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -320,10 +390,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`userid`, `password`, `role`, `email`, `name`, `major`, `tel`, `ques`, `answer`) VALUES
-('123', '123', 'T', NULL, '测试员', NULL, NULL, NULL, NULL),
 ('student', 'student', 'S', 'student@zju.edu.cn', '某某', '计算机科学与技术', '18868813800', '三点一四一五九二六', '5358979'),
 ('ta', 'ta', 'A', NULL, '测试员A', NULL, NULL, NULL, NULL),
-('teacher', 'teacher', 'T', '', '刑卫', '', '', '', '');
+('teacher', 'teacher', 'T', 'wxing@zju.edu.cn', '邢卫', '计算机科学与技术', '18788888888', '', ''),
+('teacher2', 'teacher2', 'T', 'htl@zju.edu.cn', '胡天磊', '计算机科学与技术', '18766666', NULL, NULL),
+('teacher3', 'teacher3', 'T', 'ysliu@cad.zju.edu.cn', '刘玉生', '计算机科学与技术', '13093781234', NULL, NULL),
+('teacher4', 'teacher4', 'T', 'jb@21cn.com', '金波', '计算机科学与技术', NULL, NULL, NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
