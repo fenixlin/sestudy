@@ -26,7 +26,6 @@
         </div>
       </div>
     </div>
-
   <div class="container">
   	<div id="internal_container">
     	<legend><strong>所有课程列表</strong></legend>
@@ -49,7 +48,7 @@
               if ($flag) echo " class=\"info\"";
               echo ">";
 
-              echo "<td>".$row->id."</td>";
+              echo "<td>".$row->courseid."</td>";
               echo "<td>".$row->name."</td>";              
 
               echo "</tr>";
@@ -97,13 +96,13 @@
               if ($flag) echo " class=\"info\"";
               echo ">";
 
-              echo "<td>".$row->id."</td>";
+              echo "<td>".$row->classid."</td>";
               echo "<td>".$row->term."</td>";              
               echo "<td>".$row->coursename."</td>";
               echo "<td>".$row->time."</td>";
               echo "<td>".$row->major."</td>";
 
-              $tchlist = $this->backstage_model->get_class_teacher($row->courseid, $row->id);              
+              $tchlist = $this->backstage_model->get_class_teacher($row->courseid, $row->classid);              
               echo "<td>";
               foreach ($tchlist->result() as $tch)
               {
@@ -119,7 +118,6 @@
                 else $flag = FALSE;
             }
           ?>          
-          </tr>
         </tbody>        
       </table>
 
@@ -157,12 +155,12 @@
             echo "<tr>";
             $query = $this->backstage_model->get_class_info($forum->classid);            
             $thisclass = $query->first_row();
-            echo "<td>".$thisclass->id."</td>";
+            echo "<td>".$thisclass->classid."</td>";
             echo "<td>".$thisclass->term."</td>";
             echo "<td>".$thisclass->coursename."</td>";
             echo "<td>".$thisclass->time."</td>";
             echo "<td>".$thisclass->major."</td>";
-            $tchlist = $this->backstage_model->get_class_teacher($thisclass->courseid, $thisclass->id);
+            $tchlist = $this->backstage_model->get_class_teacher($thisclass->courseid, $thisclass->classid);
             echo "<td>";
             foreach ($tchlist->result() as $tch)
             {
@@ -176,6 +174,7 @@
         }
       ?>
   	</div>
-	</body>
+  </div>
+</body>
 
 </html>

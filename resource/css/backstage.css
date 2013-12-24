@@ -31,3 +31,13 @@ body{
 a.reversed {
     color: #bbccff;
 }
+
+.modal {
+    width: 300px;
+    margin-left: -150px;
+}
+
+.modal.fade.in {
+    top: 30%;
+}
+
