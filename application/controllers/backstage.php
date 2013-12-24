@@ -77,10 +77,108 @@ class Backstage extends CI_Controller {
         $this->load->view('backstage/assistants');
     }
 
+    public function assistants_new()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('username', 'UserID', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+        {            
+            $this->load->view('backstage/htmlhead');
+            $this->load->view('backstage/assistants_new');
+        }
+        else
+        {
+            if ($this->backstage_model->existing_id())
+            {
+                $this->session->set_flashdata('message', "<p>用户名已被注册</p>");               
+                redirect("/backstage/assistants_new");
+            }
+            else
+            { 
+                $this->backstage_model->insert_assistant();
+                redirect("/backstage/assistants");
+            }
+        }        
+    }
+
+    public function assistants_edit($userid)
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('username', 'UserID', 'required');
+
+        $data = array('userid' => $userid);
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('backstage/htmlhead');
+            $this->load->view('backstage/assistants_edit', $data);
+        }
+        else
+        {
+            $this->backstage_model->update_assistant($userid);
+            redirect("/backstage/assistants");
+        }        
+    }
+
+    public function assistants_delete($userid)
+    {
+        $this->backstage_model->delete_assistant($userid);
+        redirect("/backstage/assistants");
+    }
+
     public function students()
     {
         $this->load->view('backstage/htmlhead');
         $this->load->view('backstage/students');
+    }
+
+    public function students_new()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('username', 'UserID', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+        {            
+            $this->load->view('backstage/htmlhead');
+            $this->load->view('backstage/students_new');
+        }
+        else
+        {
+            if ($this->backstage_model->existing_id())
+            {
+                $this->session->set_flashdata('message', "<p>用户名已被注册</p>");               
+                redirect("/backstage/students_new");
+            }
+            else
+            { 
+                $this->backstage_model->insert_student();
+                redirect("/backstage/students");
+            }
+        }        
+    }
+
+    public function students_edit($userid)
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('username', 'UserID', 'required');
+
+        $data = array('userid' => $userid);
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('backstage/htmlhead');
+            $this->load->view('backstage/students_edit', $data);
+        }
+        else
+        {
+            $this->backstage_model->update_student($userid);
+            redirect("/backstage/students");
+        }        
+    }
+
+    public function students_delete($userid)
+    {
+        $this->backstage_model->delete_student($userid);
+        redirect("/backstage/students");
     }
 
     public function courses()
@@ -88,5 +186,18 @@ class Backstage extends CI_Controller {
         $this->load->view('backstage/htmlhead');
         $this->load->view('backstage/courses');
     }
+
+    public function classes_new()
+    {
+        $this->load->view('backstage/htmlhead');
+        $this->load->view('backstage/classes_new');
+    }
+
+    public function forums_new()
+    {
+        $this->load->view('backstage/htmlhead');
+        $this->load->view('backstage/forums_new');
+    }
+
 }
 

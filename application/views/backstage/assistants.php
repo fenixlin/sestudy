@@ -29,7 +29,7 @@
 
   <div class="container">
   	<div id="internal_container">
-    	<legend><strong>所有助教列表</strong><button class="btn btn-primary" style="float:right;">添加教师</button></legend>
+      <legend><strong>所有助教列表</strong><a type="button" class="btn btn-primary" style="float:right;" href="<?=site_url()?>backstage/assistants_new.html">添加助教</a></legend>
     	<table class="table table-hover wrapped">
         <tbody>
           <tr class="info">
@@ -53,7 +53,7 @@
             </td>
           </tr>
           <?php
-            $query = $this->backstage_model->get_teacher_list();
+            $query = $this->backstage_model->get_assistant_list();
             $flag = FALSE;
             foreach ($query->result() as $row)
             {
@@ -66,18 +66,28 @@
               echo "<td>".$row->major."</td>";
               echo "<td>".$row->email."</td>";
               echo "<td>".$row->tel."</td>";
-              echo "<td><i class=\"icon-edit\"></i>&nbsp;<i class=\"icon-remove\"></i></td>";
+              echo "<td><a href=\"".site_url()."backstage\\assistants_edit\\".$row->userid."\"><i class=\"icon-edit\"></i></a>";
+              echo "&nbsp;<a href=\"#modal".$row->userid."\" data-toggle=\"modal\"><i class=\"icon-remove\"></i></a></td>";
+
+              echo "<div id=\"modal".$row->userid."\" class=\"modal hide fade\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">";
+              echo "<div class=\"modal-body\">";
+              echo "确认删除助教\"".$row->name."\"吗？";
+              echo "</div>";
+              echo "<div class=\"modal-footer\">";
+              echo "<button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">取消</button>";
+              echo "<a href=\"".site_url()."backstage\\assistants_delete\\".$row->userid."\" class=\"btn btn-primary\">确定</a>";
+              echo "</div>";
 
               echo "</tr>";
 
               if (!$flag) $flag = TRUE;
                 else $flag = FALSE;
             }
-          ?>
-          
+          ?>        
         </tbody>        
       </table>
   	</div>
-	</body>
+  </div>
+</body>
 
 </html>

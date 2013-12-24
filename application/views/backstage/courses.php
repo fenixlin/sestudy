@@ -61,7 +61,7 @@
       </table>
 
 
-      <legend><strong>所有班级列表</strong><button class="btn btn-primary" style="float:right;">添加班级</button></legend>
+      <legend><strong>所有班级列表</strong><a href="<?=site_url()?>backstage/classes_new.html" class="btn btn-primary" style="float:right;">添加班级</a></legend>
       <table class="table table-hover wrapped">
         <tbody>
           <tr class="info">
@@ -121,12 +121,13 @@
         </tbody>        
       </table>
 
-      <legend><strong>所有讨论区列表</strong><button class="btn btn-primary" style="float:right;">添加讨论区</button></legend>
+      <legend><strong>所有讨论区列表</strong><a href="<?=site_url()?>backstage/forums_new.html" class="btn btn-primary" style="float:right;">添加讨论区</a></legend>      
       <?php
         $maxfid = (int)($this->backstage_model->get_max_forumid());
         for ($i = 1; $i <= $maxfid; $i++)
         {
-          echo "<h4>讨论区".$i."包括班级：</h4>";
+          echo "<div class=\"title\"><span class=\"title\">讨论区".$i."包括班级：</span>";
+          echo "<a href=\"".site_url()."backstage/forums_delete/".$i."\" class=\"btn\" style=\"float:right;\">删除讨论区".$i."</a></div>";
           echo "<table class=\"table table-hover wrapped\">
                   <tbody>
                     <tr class=\"info\">
