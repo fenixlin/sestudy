@@ -30,12 +30,12 @@
   <div class="container">
     <div id="internal_container">
     	<legend>
-        <strong>添加教学班级</strong>
+        <strong>编辑教学班级</strong>
         <a class="btn" style="float:right;" href="<?=site_url()?>backstage/courses.html">返回</a>
       </legend>
         <?php 
           $attr = array('class'=>'form-horizontal');
-          echo form_open('backstage/classes_new',$attr);
+          echo form_open('backstage/classes_edit/'.$classid,$attr);
         ?> 
           <?php
             $message = validation_errors();
@@ -47,23 +47,24 @@
               echo $message2;
               echo "</div>";
             }
-          ?>          
+          ?>
+          <?php $classinfo = $this->backstage_model->get_class_info($classid); ?>
     	    <div class="control-group">
             <label class="control-label" for="term">学期&nbsp;:</label>
             <div class="controls">
-              <input class="input-xlarge" type="text" id="term" name="term" value="">
+              <input class="input-xlarge" type="text" id="term" name="term" value="<?=$classinfo->term?>">
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="time">上课时段&nbsp;:</label>
             <div class="controls">
-              <input class="input-xlarge" type="text" id="time" name="time" value="">
+              <input class="input-xlarge" type="text" id="time" name="time" value="<?=$classinfo->time?>">
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="major">面向专业&nbsp;:</label>
             <div class="controls">
-              <input class="input-xlarge" type="text" id="major" name="major" value="">
+              <input class="input-xlarge" type="text" id="major" name="major" value="<?=$classinfo->major?>">
             </div>
           </div>      
           <div class="control-group">
@@ -91,7 +92,9 @@
                     if ($flag) echo " class=\"info\"";
                     echo ">";
 
-                    echo "<td><input type=\"radio\" name=\"courseid\" value=\"".$row->courseid."\" /></td>";
+                    echo "<td><input type=\"radio\" name=\"courseid\" value=\"".$row->courseid."\" ";
+                    if ($row->courseid == $classinfo->courseid) echo "checked";
+                    echo "></td>";
                     echo "<td>".$row->courseid."</td>";
                     echo "<td>".$row->name."</td>";              
 
@@ -139,7 +142,9 @@
                       if ($flag) echo " class=\"info\"";
                       echo ">";
 
-                      echo "<td><input type=\"checkbox\" name=\"teacher[]\" value=\"".$row->userid."\"></td>";
+                      echo "<td><input type=\"checkbox\" name=\"teacher[]\" value=\"".$row->userid."\"";
+                      if ($this->backstage_model->is_teaching($row->userid, $classinfo->courseid, $classinfo->classid)) echo "checked";
+                      echo "></td>";
                       echo "<td>".$row->userid."</td>";
                       echo "<td>".$row->name."</td>";
                       echo "<td>".$row->major."</td>";
@@ -190,7 +195,9 @@
                       if ($flag) echo " class=\"info\"";
                       echo ">";
 
-                      echo "<td><input type=\"checkbox\" name=\"assistant[]\" value=\"".$row->userid."\"></td>";
+                      echo "<td><input type=\"checkbox\" name=\"assistant[]\" value=\"".$row->userid."\"";
+                      if ($this->backstage_model->is_assisting($row->userid, $classinfo->courseid, $classinfo->classid)) echo "checked";
+                      echo "></td>";
                       echo "<td>".$row->userid."</td>";
                       echo "<td>".$row->name."</td>";
                       echo "<td>".$row->major."</td>";

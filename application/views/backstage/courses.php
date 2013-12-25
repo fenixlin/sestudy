@@ -110,7 +110,18 @@
               }
               echo "</td>";
 
-              echo "<td><i class=\"icon-edit\"></i>&nbsp;<i class=\"icon-remove\"></i></td>";
+              echo "<td><a href=\"".site_url()."backstage\\classes_edit\\".$row->classid."\"><i class=\"icon-edit\"></i></a>";
+              echo "&nbsp;<a href=\"#classmodal".$row->classid."\" data-toggle=\"modal\"><i class=\"icon-remove\"></i></a></td>";
+
+              echo "<div id=\"classmodal".$row->classid."\" class=\"modal hide fade\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">";
+              echo "<div class=\"modal-body\">";
+              echo "确认删除班级".$row->classid."吗？";
+              echo "</div>";
+              echo "<div class=\"modal-footer\">";
+              echo "<button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">取消</button>";
+              echo "<a href=\"".site_url()."backstage\\classes_delete\\".$row->classid."\" class=\"btn btn-primary\">确定</a>";
+              echo "</div>";
+              echo "</div>";
 
               echo "</tr>";
 
@@ -127,7 +138,18 @@
         for ($i = 1; $i <= $maxfid; $i++)
         {
           echo "<div class=\"title\"><span class=\"title\">讨论区".$i."包括班级：</span>";
-          echo "<a href=\"".site_url()."backstage/forums_delete/".$i."\" class=\"btn\" style=\"float:right;\">删除讨论区".$i."</a></div>";
+          echo "<a href=\"#forummodal".$i."\" class=\"btn\" style=\"float:right;\" data-toggle=\"modal\">删除讨论区".$i."</a></div>";
+
+          echo "<div id=\"forummodal".$i."\" class=\"modal hide fade\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">";
+          echo "<div class=\"modal-body\">";
+          echo "确认删除讨论区".$i."吗？";
+          echo "</div>";
+          echo "<div class=\"modal-footer\">";
+          echo "<button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">取消</button>";
+          echo "<a href=\"".site_url()."backstage\\forums_delete\\".$i."\" class=\"btn btn-primary\">确定</a>";
+          echo "</div>";
+          echo "</div>";
+
           echo "<table class=\"table table-hover wrapped\">
                   <tbody>
                     <tr class=\"info\">
@@ -154,8 +176,7 @@
           foreach ($forumlist->result() as $forum)
           {
             echo "<tr>";
-            $query = $this->backstage_model->get_class_info($forum->classid);            
-            $thisclass = $query->first_row();
+            $thisclass = $this->backstage_model->get_class_info($forum->classid);            
             echo "<td>".$thisclass->classid."</td>";
             echo "<td>".$thisclass->term."</td>";
             echo "<td>".$thisclass->coursename."</td>";

@@ -14,10 +14,10 @@
             	<li>
                 <a href="<?=site_url()?>backstage/assistants.html">助教账户管理</a>
                 </li>
-            	<li class="active">
+            	<li>
                 <a href="<?=site_url()?>backstage/students.html">学生账户管理</a>
             	</li>
-                <li>
+              <li class="active">
                 <a href="<?=site_url()?>backstage/courses.html">课程班级管理</a>
             	</li>
         		</ul>
@@ -38,7 +38,7 @@
           echo form_open('backstage/forums_new',$attr);
         ?> 
           <?php
-            $message = validation_errors();
+            $message = validation_errors();                    
             $message2 = $this->session->flashdata('message');
             if ($message != "" || $message2 != "")
             {
@@ -48,6 +48,7 @@
               echo "</div>";
             }
           ?>
+          <input id="fb" name="fb" type="hidden"> <!--加一个input域才能显示错误信息TAT-->
           <div class="control-group">
             <label class="control-label" for="tel">对应班级&nbsp;:</label>
             <div class="controls">

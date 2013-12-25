@@ -24,6 +24,18 @@ class Backstage_model extends CI_Model {
         return $query;
     }
 
+    public function get_course_list()
+    {
+        $query = $this->db->get('courses');
+        return $query;
+    }
+    
+    public function get_class_list()
+    {
+        $query = $this->db->get('classes');
+        return $query;
+    }
+
     public function get_teacher_info($userid)
     {
         $query = $this->db->get_where('users',array('role' => "T", 'userid' => $userid));
@@ -42,16 +54,10 @@ class Backstage_model extends CI_Model {
         return $query->first_row();
     }
 
-    public function get_course_list()
+    public function get_class_info($classid)
     {
-        $query = $this->db->get('courses');
-        return $query;
-    }
-    
-    public function get_class_list()
-    {
-        $query = $this->db->get('classes');
-        return $query;
+        $query = $this->db->get_where('classes',array('classid' => $classid));
+        return $query->first_row();
     }
 
     public function get_class_teacher($courseid, $classid)
@@ -72,13 +78,7 @@ class Backstage_model extends CI_Model {
     {
         $query = $this->db->get_where('forum_relation',array('forumid' => $forumid));
         return $query;
-    }
-
-    public function get_class_info($classid)
-    {
-        $query = $this->db->get_where('classes',array('classid' => $classid));
-        return $query;
-    }
+    }    
 
     public function existing_id()
     {
@@ -238,6 +238,144 @@ class Backstage_model extends CI_Model {
     {
         $this->db->delete('users', array('userid' => $userid));
         $this->db->delete('ta_belong', array('userid' => $userid)); 
+    }
+
+    public function insert_class()
+    {
+        $courseid = $this->input->post('courseid');
+        $query = $this->db->get_where('courses', array('courseid' => $courseid));
+        $row = $query->first_row();
+        $coursename = $row->name;
+        $data = array
+        (
+            'courseid' => $courseid,
+            'coursename' => $coursename,
+            'term' => $this->input->post('term'),
+            'time' => $this->input->post('time'),            
+            'major' => $this->input->post('major')
+        );
+        $this->db->insert('classes',$data);
+
+        $query = $this->db->get_where('classes', $data);
+        $row = $query->first_row();
+        $classid = $row->classid;
+
+        $teachers = $this->input->post('teacher');
+        foreach ($teachers as $teacherid)
+        {
+            $row = $this->backstage_model->get_teacher_info($teacherid);
+            $name = $row->name;
+
+            $data = array
+            (
+                'userid' => $teacherid,
+                'name' => $name,
+                'courseid' => $courseid,
+                'classid' => $classid
+            );
+            $this->db->insert('tch_belong',$data);
+        }
+
+        $assistants = $this->input->post('assistant');
+        foreach ($assistants as $assistantid)
+        {
+            $row = $this->backstage_model->get_assistant_info($assistantid);
+            $name = $row->name;
+
+            $data = array
+            (
+                'userid' => $assistantid,
+                'name' => $name,
+                'courseid' => $courseid,
+                'classid' => $classid
+            );
+            $this->db->insert('ta_belong',$data);
+        }
+    }
+
+    public function edit_class($classid)
+    {
+        $courseid = $this->input->post('courseid');
+        $query = $this->db->get_where('courses', array('courseid' => $courseid));
+        $row = $query->first_row();
+        $coursename = $row->name;
+        $data = array
+        (
+            'courseid' => $courseid,
+            'coursename' => $coursename,
+            'term' => $this->input->post('term'),
+            'time' => $this->input->post('time'),            
+            'major' => $this->input->post('major')
+        );
+        $this->db->update('classes', $data, array('classid' => $classid));
+        
+        //删除所有归属信息，再重新插入
+        $this->db->delete('tch_belong', array('classid' => (int)$classid)); 
+
+        $teachers = $this->input->post('teacher');
+        foreach ($teachers as $teacherid)
+        {
+            $row = $this->backstage_model->get_teacher_info($teacherid);
+            $name = $row->name;
+
+            $data = array
+            (
+                'userid' => $teacherid,
+                'name' => $name,
+                'courseid' => $courseid,
+                'classid' => $classid
+            );
+            $this->db->insert('tch_belong',$data);
+        }
+
+        //删除所有归属信息，再重新插入
+        $this->db->delete('ta_belong', array('classid' => (int)$classid)); 
+
+        $assistants = $this->input->post('assistant');
+        foreach ($assistants as $assistantid)
+        {
+            $row = $this->backstage_model->get_assistant_info($assistantid);
+            $name = $row->name;
+
+            $data = array
+            (
+                'userid' => $assistantid,
+                'name' => $name,
+                'courseid' => $courseid,
+                'classid' => $classid
+            );
+            $this->db->insert('ta_belong',$data);
+        }
+    }
+
+    public function delete_class($classid)
+    {
+        $this->db->delete('classes', array('classid' => $classid));
+        $this->db->delete('tch_belong', array('classid' => $classid));
+        $this->db->delete('ta_belong', array('classid' => $classid));
+        $this->db->delete('stu_belong', array('classid' => $classid));
+        $this->db->delete('forum_relation', array('classid' => $classid));
+    }
+
+    public function insert_forum()
+    {
+        //假设论坛累积量不会超过那么多个=.=
+        $forumid = $this->backstage_model->get_max_forumid() + 1;
+        $classes = $this->input->post('class');
+        foreach ($classes as $classid)
+        {
+            $data = array
+            (
+                'forumid' => $forumid,
+                'classid' => $classid
+            );
+            $this->db->insert('forum_relation',$data);
+        }
+    }
+
+    public function delete_forum($forumid)
+    {
+        $this->db->delete('forum_relation', array('forumid' => $forumid));
     }
 
 }

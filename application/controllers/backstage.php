@@ -189,14 +189,69 @@ class Backstage extends CI_Controller {
 
     public function classes_new()
     {
-        $this->load->view('backstage/htmlhead');
-        $this->load->view('backstage/classes_new');
+        $this->load->library('form_validation');        
+        $this->form_validation->set_rules('courseid[]', '所属课程', 'required');        
+        $this->form_validation->set_message('required', '请填写 %s'); 
+
+        if ($this->form_validation->run() == FALSE)
+        {            
+            $this->load->view('backstage/htmlhead');
+            $this->load->view('backstage/classes_new');
+        }
+        else
+        {
+            $this->backstage_model->insert_class();            
+            redirect("/backstage/courses");
+        }
+    }
+
+    public function classes_edit($classid)
+    {
+        $this->load->library('form_validation');        
+        $this->form_validation->set_rules('courseid[]', '所属课程', 'required');        
+        $this->form_validation->set_message('required', '请填写 %s'); 
+
+        $data = array('classid' => $classid);
+        if ($this->form_validation->run() == FALSE)
+        {            
+            $this->load->view('backstage/htmlhead');
+            $this->load->view('backstage/classes_edit', $data);
+        }
+        else
+        {
+            $this->backstage_model->edit_class($classid);  
+            redirect("/backstage/courses");
+        }
+    }
+
+    public function classes_delete($classid)
+    {
+        $this->backstage_model->delete_class($classid);
+        redirect("/backstage/courses");
     }
 
     public function forums_new()
     {
-        $this->load->view('backstage/htmlhead');
-        $this->load->view('backstage/forums_new');
+        $this->load->library('form_validation');        
+        $this->form_validation->set_rules('class[]', '对应班级', 'required');        
+        $this->form_validation->set_message('required', '请填写 %s'); //not working here, may because of array usage
+
+        if ($this->form_validation->run() == FALSE)
+        {            
+            $this->load->view('backstage/htmlhead');
+            $this->load->view('backstage/forums_new');
+        }
+        else
+        {
+            $this->backstage_model->insert_forum();            
+            redirect("/backstage/courses");
+        }
+    }
+
+    public function forums_delete($forumid)
+    {
+        $this->backstage_model->delete_forum($forumid);
+        redirect("/backstage/courses");
     }
 
 }

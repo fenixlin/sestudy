@@ -77,6 +77,7 @@
               echo "<button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">取消</button>";
               echo "<a href=\"".site_url()."backstage\\teachers_delete\\".$row->userid."\" class=\"btn btn-primary\">确定</a>";
               echo "</div>";
+              echo "</div>";
 
               echo "</tr>";
 
