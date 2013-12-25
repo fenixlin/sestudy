@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2013 年 12 月 24 日 10:23
--- 服务器版本: 5.6.12-log
--- PHP 版本: 5.4.16
+-- 生成日期: 2013 年 12 月 25 日 07:39
+-- 服务器版本: 5.1.44
+-- PHP 版本: 5.3.1
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -19,8 +18,6 @@ SET time_zone = "+00:00";
 --
 -- 数据库: `sestudy`
 --
-CREATE DATABASE IF NOT EXISTS `sestudy` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `sestudy`;
 
 -- --------------------------------------------------------
 
@@ -121,9 +118,9 @@ CREATE TABLE IF NOT EXISTS `intro` (
 --
 
 INSERT INTO `intro` (`course`, `c_name`, `e_name`, `course_code`, `academy`, `credit_hour`, `week_hour`, `season`, `belong`, `requirement`, `textbook`, `c_intro`, `e_intro`) VALUES
-(1, '软件需求分析与设计', 'Software Demand Analysis & Design', 22190880, '软件学院', '3.5', '3.0-1.0', '秋冬', '软件工程专业必修课', '软件工程', '<p><span style="font-size:14px;font-family:宋体;color:black">《软件需求》第</span><span style="font-size:14px;font-family:&#39;Simsun&#39;,&#39;serif&#39;;color:black">2</span><span style="font-size:14px;font-family:宋体;color:black">版，</span><span style="font-size:14px;font-family:&#39;Simsun&#39;,&#39;serif&#39;;color:black">[</span><span style="font-size:14px;font-family:宋体;color:black">美</span><span style="font-size:14px;font-family:&#39;Simsun&#39;,&#39;serif&#39;;color:black">] Karl E. Wiegers </span><span style="font-size:14px;font-family:宋体;color:black">著，刘伟琴、刘洪涛</span><span style="font-size:14px;font-family:宋体;color:black">译，</span><span style="font-size:14px;font-family:&#39;Simsun&#39;,&#39;serif&#39;;color:black">2004</span><span style="font-size:14px;font-family:宋体;color:black">年</span><span style="font-size:14px;font-family:&#39;Simsun&#39;,&#39;serif&#39;;color:black">11</span><span style="font-size:14px;font-family:宋体;color:black">月第</span><span style="font-size:14px;font-family:&#39;Simsun&#39;,&#39;serif&#39;;color:black">1</span><span style="font-size:14px;font-family:宋体;color:black">版，清华大学出版社</span></p><p><span style="font-size:14px;font-family:宋体;color:black"><img src="http://localhost/sestudy/resource/ueditor/php/upload/20131205/13862178641235.jpg" _src="http://localhost/sestudy/resource/ueditor/php/upload/20131205/13862178641235.jpg" width="120" height="172"/></span></p>', '<p><span style=";font-family:宋体">《软件需求分析与设计》是软件开发及软件工程人员的一门基础技能课程，该课程主要介绍软件需求工程的基本理论，包括：需求工程的基本概念，需求工程。需求过程主要包括需求开发和需求管理两个部分：需求开发包括需求获取、需求分析、规格定义和需求验证四个方面；需求管理包括需求评审、需求变更控制和需求跟踪等内容。</span></p><p><span style=";font-family:宋体">同时，该课程介绍了实际的需求工程应用技术，主要包括需求获取的方法、各种需求分析技术，需求规格的要求</span><span>,</span><span style=";font-family:宋体">了解主要的需求管理工具使用方法等。</span></p><p><span style="font-size:14px;font-family:宋体">该课程还介绍了软件需求分析与设计中的通用技术，主要是</span><span style="font-size:14px;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;">UML</span><span style="font-size:14px;font-family:宋体">技术与方法，包括：面向对象的分析与设计技术概述、</span><span style="font-size:14px;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;">UML</span><span style="font-size:14px;font-family:宋体">发展历史概述、</span><span style="font-size:14px;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;">UML</span><span style="font-size:14px;font-family:宋体">技术中主要的</span><span style="font-size:14px;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;">13</span><span style="font-size:14px;font-family:宋体">类图表的制作方法、设计模式概念的介绍、</span><span style="font-size:14px;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;">UML</span><span style="font-size:14px;font-family:宋体">开发工具的介绍以及如何编写初步的软件概要设计说明。</span></p>', '<p><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Introducethe basic conceptions of Software Requirement Engineering</span></p><p class="MsoListParagraph" style="margin-left: 28px"><span style=";font-family:Wingdings">l<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Twoprocesses : requirement development process and requirement management process</span></p><p class="MsoListParagraph" style="margin-left: 56px"><span style=";font-family:Wingdings">ü<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Development: acquisition, analyst, specification &amp; verification</span></p><p class="MsoListParagraph" style="margin-left: 56px"><span style=";font-family:Wingdings">ü<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Management: review, change control, management &amp; tracing </span></p><p><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Howto used SRE in practice</span></p><p class="MsoListParagraph" style="margin-left: 28px"><span style=";font-family:Wingdings">l<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Methodsand techniques for acquisition, analyst &amp; specification</span></p><p><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Generaltechnique for Software Requirement Analysis &amp; Design (SRA&amp;D)</span></p><p class="MsoListParagraph" style="margin-left: 28px"><span style=";font-family:Wingdings">l<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">OOA&amp; D</span></p><p class="MsoListParagraph" style="margin-left: 28px"><span style=";font-family:Wingdings">l<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">UnifiedModeling Language – UML</span></p><p class="MsoListParagraph" style="margin-left: 56px"><span style=";font-family:Wingdings">ü<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">UMLhistory/background</span></p><p class="MsoListParagraph" style="margin-left: 56px"><span style=";font-family:Wingdings">ü<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">13diagrams used in UML</span></p><p class="MsoListParagraph" style="margin-left: 56px"><span style=";font-family:Wingdings">ü<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Designpattern conception</span></p><p class="MsoListParagraph" style="margin-left: 56px"><span style=";font-family:Wingdings">ü<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">UMLtools</span></p><p><span style="font-size:14px;font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">WriteSoftware Brief Design Specification</span></p>'),
-(2, '项目管理与案例分析', '', 0, '0', '0.0', '0', '0', '0', '0', '<p>0</p>', '<p>0</p>', '<p>0</p>'),
-(3, '0', '0', 0, '0', '0.0', '0', '0', '0', '0', '0', '0', '0');
+(1, '软件需求分析与设计', 'Software Demand Analysis & Design', 22190880, '软件学院', 3.5, '3.0-1.0', '秋冬', '软件工程专业必修课', '软件工程', '<p><span style="font-size:14px;font-family:宋体;color:black">《软件需求》第</span><span style="font-size:14px;font-family:&#39;Simsun&#39;,&#39;serif&#39;;color:black">2</span><span style="font-size:14px;font-family:宋体;color:black">版，</span><span style="font-size:14px;font-family:&#39;Simsun&#39;,&#39;serif&#39;;color:black">[</span><span style="font-size:14px;font-family:宋体;color:black">美</span><span style="font-size:14px;font-family:&#39;Simsun&#39;,&#39;serif&#39;;color:black">] Karl E. Wiegers </span><span style="font-size:14px;font-family:宋体;color:black">著，刘伟琴、刘洪涛</span><span style="font-size:14px;font-family:宋体;color:black">译，</span><span style="font-size:14px;font-family:&#39;Simsun&#39;,&#39;serif&#39;;color:black">2004</span><span style="font-size:14px;font-family:宋体;color:black">年</span><span style="font-size:14px;font-family:&#39;Simsun&#39;,&#39;serif&#39;;color:black">11</span><span style="font-size:14px;font-family:宋体;color:black">月第</span><span style="font-size:14px;font-family:&#39;Simsun&#39;,&#39;serif&#39;;color:black">1</span><span style="font-size:14px;font-family:宋体;color:black">版，清华大学出版社</span></p><p><span style="font-size:14px;font-family:宋体;color:black"><img src="http://localhost/sestudy/resource/ueditor/php/upload/20131205/13862178641235.jpg" _src="http://localhost/sestudy/resource/ueditor/php/upload/20131205/13862178641235.jpg" width="120" height="172"/></span></p>', '<p><span style=";font-family:宋体">《软件需求分析与设计》是软件开发及软件工程人员的一门基础技能课程，该课程主要介绍软件需求工程的基本理论，包括：需求工程的基本概念，需求工程。需求过程主要包括需求开发和需求管理两个部分：需求开发包括需求获取、需求分析、规格定义和需求验证四个方面；需求管理包括需求评审、需求变更控制和需求跟踪等内容。</span></p><p><span style=";font-family:宋体">同时，该课程介绍了实际的需求工程应用技术，主要包括需求获取的方法、各种需求分析技术，需求规格的要求</span><span>,</span><span style=";font-family:宋体">了解主要的需求管理工具使用方法等。</span></p><p><span style="font-size:14px;font-family:宋体">该课程还介绍了软件需求分析与设计中的通用技术，主要是</span><span style="font-size:14px;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;">UML</span><span style="font-size:14px;font-family:宋体">技术与方法，包括：面向对象的分析与设计技术概述、</span><span style="font-size:14px;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;">UML</span><span style="font-size:14px;font-family:宋体">发展历史概述、</span><span style="font-size:14px;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;">UML</span><span style="font-size:14px;font-family:宋体">技术中主要的</span><span style="font-size:14px;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;">13</span><span style="font-size:14px;font-family:宋体">类图表的制作方法、设计模式概念的介绍、</span><span style="font-size:14px;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;">UML</span><span style="font-size:14px;font-family:宋体">开发工具的介绍以及如何编写初步的软件概要设计说明。</span></p>', '<p><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Introducethe basic conceptions of Software Requirement Engineering</span></p><p class="MsoListParagraph" style="margin-left: 28px"><span style=";font-family:Wingdings">l<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Twoprocesses : requirement development process and requirement management process</span></p><p class="MsoListParagraph" style="margin-left: 56px"><span style=";font-family:Wingdings">ü<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Development: acquisition, analyst, specification &amp; verification</span></p><p class="MsoListParagraph" style="margin-left: 56px"><span style=";font-family:Wingdings">ü<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Management: review, change control, management &amp; tracing </span></p><p><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Howto used SRE in practice</span></p><p class="MsoListParagraph" style="margin-left: 28px"><span style=";font-family:Wingdings">l<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Methodsand techniques for acquisition, analyst &amp; specification</span></p><p><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Generaltechnique for Software Requirement Analysis &amp; Design (SRA&amp;D)</span></p><p class="MsoListParagraph" style="margin-left: 28px"><span style=";font-family:Wingdings">l<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">OOA&amp; D</span></p><p class="MsoListParagraph" style="margin-left: 28px"><span style=";font-family:Wingdings">l<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">UnifiedModeling Language – UML</span></p><p class="MsoListParagraph" style="margin-left: 56px"><span style=";font-family:Wingdings">ü<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">UMLhistory/background</span></p><p class="MsoListParagraph" style="margin-left: 56px"><span style=";font-family:Wingdings">ü<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">13diagrams used in UML</span></p><p class="MsoListParagraph" style="margin-left: 56px"><span style=";font-family:Wingdings">ü<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">Designpattern conception</span></p><p class="MsoListParagraph" style="margin-left: 56px"><span style=";font-family:Wingdings">ü<span style="font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span style=";font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">UMLtools</span></p><p><span style="font-size:14px;font-family:&#39;Arial&#39;,&#39;sans-serif&#39;">WriteSoftware Brief Design Specification</span></p>'),
+(2, '项目管理与案例分析', '', 0, '0', 0.0, '0', '0', '0', '0', '<p>0</p>', '<p>0</p>', '<p>0</p>'),
+(3, '0', '0', 0, '0', 0.0, '0', '0', '0', '0', '0', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -325,21 +322,28 @@ INSERT INTO `tinfo` (`course`, `info`) VALUES
 CREATE TABLE IF NOT EXISTS `topic` (
   `topic_id` int(8) NOT NULL AUTO_INCREMENT,
   `author_id` varchar(20) DEFAULT NULL,
-  `class_id` int(8) DEFAULT NULL,
-  `group_id` int(8) DEFAULT NULL,
+  `author_name` varchar(30) NOT NULL,
+  `forumid` int(11) NOT NULL,
   `number_of_comment` int(4) DEFAULT NULL,
   `time` int(16) DEFAULT NULL,
   `content` text,
   `noname` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`topic_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
 -- 转存表中的数据 `topic`
 --
 
-INSERT INTO `topic` (`topic_id`, `author_id`, `class_id`, `group_id`, `number_of_comment`, `time`, `content`, `noname`) VALUES
-(13, 'student', 1, 1, 3, 1387261444, '这是一个测试', 0);
+INSERT INTO `topic` (`topic_id`, `author_id`, `author_name`, `forumid`, `number_of_comment`, `time`, `content`, `noname`) VALUES
+(13, 'student', '', 1, 3, 1387261444, '这是一个测试', 0),
+(14, 'student', '', 0, 1, 1387950202, '这门课程的期末考试是开卷吗？', 1),
+(15, 'student', '', 0, 0, 1387950953, 'Try it again\n', 0),
+(16, 'teacher', '', 0, 0, 1387953282, '请问一下大家希望答辩安排在什么时间？', 0),
+(17, 'teacher', '', 0, 0, 1387953325, '请问一下大家希望答辩安排在什么时间？', 0),
+(18, 'teacher', '', 0, 0, 1387953330, '请问一下大家希望答辩安排在什么时间？', 0),
+(19, 'teacher', '邢卫', 1, 0, 1387955765, 'Try a again', 0),
+(20, 'teacher', '邢卫', 1, 0, 1387956908, '啦啦啦', 0);
 
 -- --------------------------------------------------------
 
@@ -351,20 +355,22 @@ CREATE TABLE IF NOT EXISTS `topic_comment` (
   `comment_id` int(8) NOT NULL AUTO_INCREMENT,
   `topic_id` int(8) DEFAULT NULL,
   `author_id` varchar(20) DEFAULT NULL,
+  `author_name` varchar(30) NOT NULL,
   `time` int(16) DEFAULT NULL,
   `content` text,
   `noname` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`comment_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- 转存表中的数据 `topic_comment`
 --
 
-INSERT INTO `topic_comment` (`comment_id`, `topic_id`, `author_id`, `time`, `content`, `noname`) VALUES
-(22, 13, 'student', 1387261462, '这是另外一个测试', 0),
-(23, 13, 'student', 1387261510, 'こんにちは', 0),
-(24, 13, 'student', 1387261700, '안녕하세요', 0);
+INSERT INTO `topic_comment` (`comment_id`, `topic_id`, `author_id`, `author_name`, `time`, `content`, `noname`) VALUES
+(22, 13, 'student', '', 1387261462, '这是另外一个测试', 0),
+(23, 13, 'student', '', 1387261510, 'こんにちは', 0),
+(24, 13, 'student', '', 1387261700, '안녕하세요', 0),
+(25, 14, 'student', '', 1387950212, '闭卷', 0);
 
 -- --------------------------------------------------------
 
@@ -395,7 +401,3 @@ INSERT INTO `users` (`userid`, `password`, `role`, `email`, `name`, `major`, `te
 ('teacher', 'teacher', 'T', 'wxing@zju.edu.cn', '邢卫', '计算机科学与技术', '18788888888', '', ''),
 ('teacher2', 'teacher2', 'T', 'htl@zju.edu.cn', '胡天磊', '计算机科学与技术', '18766666666', NULL, NULL),
 ('teacher4', 'teacher4', 'T', 'jb@21cn.com', '金波', '计算机科学与技术', NULL, NULL, NULL);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

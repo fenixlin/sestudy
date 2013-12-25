@@ -25,6 +25,7 @@
       <div id="maincontent" class="span9">
 
 <div class="accordion" id="accordion2">
+  <h1><?echo $forumid;?></h1>
   <a href="#myModal" role="button" class="btn btn-primary btn-block btn-large" data-toggle="modal">发表新话题</a>
   <!-- Modal -->
   <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -32,8 +33,9 @@
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       <h3 id="myModalLabel">发表新话题</h3>
     </div>
-    <form action = <?php echo site_url('forum/submit')?> method = "post">
+    <form action = <?php echo site_url('forum/submit/'.$forum_no.'/'.$current_page)?> method = "post">
       <div class="modal-body">
+      <input id="forumid" name="forumid" value="<?php echo $forumid;?>" type="hidden"></input>
       <textarea id="new_content" name="new_content"></textarea>
       <input id="noname" name="noname" type="checkbox" value="1">匿名</input>
       </div>
@@ -64,7 +66,7 @@ foreach ($topic_array as $topic) {
     
     echo '<div class="row-fluid">';
     if($topic['noname'] == false)
-      echo '<div class="span12" align="right">'.date("Y/m/d H:i:s", $topic['time']).'，'.$topic['author_id'].'</div>';
+      echo '<div class="span12" align="right">'.date("Y/m/d H:i:s", $topic['time']).'，'.$topic['author_name'].'</div>';
     else
       echo '<div class="span12" align="right">'.date("Y/m/d H:i:s", $topic['time']).'，匿名</div>';
     echo '</div>';
@@ -100,7 +102,7 @@ foreach ($topic_array as $topic) {
       <div class="accordion-inner">
 <?php
     echo '<div class="row-fluid" style="border-bottom-width: 2px;border-bottom-style: solid;border-bottom-color: gray;">';
-    echo '<form action='.site_url('forum/reply/'.$topic['topic_id']).' method = "post">';
+    echo '<form action='.site_url('forum/reply/'.$topic['topic_id'].'/'.$forum_no.'/'.$current_page).' method = "post">';
     echo '<div class="span10"><textarea id="new_content" name="new_content" placeholder="输入你的评论..." style="height:20px;width:560px"></textarea></div>';
     echo '<div class="span1"><input id="noname" name="noname" type="checkbox" value="1">匿名</input></div>';
     echo '<div class="span1" align="right"><input class="btn btn-primary" type = "submit" value="回复"></div>';
@@ -117,7 +119,7 @@ foreach ($topic_array as $topic) {
         echo '</div>';
         echo '<div class="row-fluid" style="border-bottom-width: 2px;border-bottom-style: solid;border-bottom-color: gray;">';
         if($comment['noname'] == false)
-          echo '<div class="span12" align="right">'.date("Y/m/d H:i:s", $comment['time']).'，'.$comment['author_id'].'</div>';
+          echo '<div class="span12" align="right">'.date("Y/m/d H:i:s", $comment['time']).'，'.$comment['author_name'].'</div>';
         else
           echo '<div class="span12" align="right">'.date("Y/m/d H:i:s", $comment['time']).'，匿名</div>';
         echo '</div>';
@@ -142,8 +144,18 @@ foreach ($topic_array as $topic) {
 <?php
 }
 ?>
+<center>第
+<?php
+for($i = 1; $i < $total_page; $i++)
+{
+  if($i == $current_page)
+    echo $i;
+  else
+    echo '<a href="'.site_url('forum/index/'.$forum_no.'/'.$i).'">'.$i.'</a>';
+}
+?>
+页</center>
 </div>
-
       </div> <!-- main content -->
     </div> <!-- row-fluid -->
   </div> <!-- content -->

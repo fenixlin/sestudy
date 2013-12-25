@@ -6,10 +6,45 @@ class Forum_model extends CI_Model
         parent::__construct();
         $this->load->database();
     }
-    public function getTopicAndComment()
+    public function getForumid()
     {
-        $this->db->order_by("time", "desc"); 
-        $topic_array = $this->db->get('Topic');
+        $role = $this->session->userdata('role');
+        $courseid = $this->session->userdata('course');
+        $userid = $this->session->userdata('userid');
+
+        if($role == 'S')
+            $table = 'stu_belong';
+        else if($role == 'T')
+            $table = 'tch_belong';
+        else if($role == 'TA')
+            $table = 'ta_belong';
+
+        $query = 'SELECT distinct `forumid` FROM `'.$table.'`,`forum_relation` 
+        WHERE `'.$table.'`.`classid` =`forum_relation`.`classid` 
+        and `'.$table.'`.`userid` = "'.$userid.'" 
+        and `'.$table.'`.`courseid` = '.$courseid;
+        
+        $forumid = $this->db->query($query);
+        $forumid = $forumid->result_array();
+
+        #待完成
+        return $forumid;
+    }
+
+    public function getTopicNum($forumid)
+    {
+        $this->db->select('topic_id');
+        $this->db->where('forumid', $forumid);
+        $topic_array = $this->db->get('topic');
+        $result = $topic_array->num_rows();
+        return $result;
+    }
+
+    public function getTopicAndComment($forumid, $offset = 0, $limit = 10)
+    {
+        $this->db->order_by("time", "desc");
+        $this->db->where('forumid', $forumid); 
+        $topic_array = $this->db->get('Topic', $limit, $offset);
         
         if($topic_array->num_rows() == 0)
             return false;
@@ -67,6 +102,17 @@ class Forum_model extends CI_Model
         $result = $result->num_rows();
 
         return ($result == 1);
+    }
+
+    public function certificateForum($forumid)
+    {
+        #待完成
+        return true;
+    }
+    public function certificateTopic($topic_id)
+    {
+        #待完成
+        return true;
     }
 }
 ?>
