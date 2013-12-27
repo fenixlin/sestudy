@@ -47,7 +47,7 @@
             </td>
           </tr>
           <?php
-            $courseid = $this->session->userdata('courseid');
+            $courseid = $this->session->userdata('course');
             $userid = $this->session->userdata('userid');
             $query = $this->account_model->get_teacher_class_list($userid, $courseid);
             $flag = FALSE;

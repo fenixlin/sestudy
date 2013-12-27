@@ -149,6 +149,11 @@ class Backstage extends CI_Controller {
                 $this->session->set_flashdata('message', "<p>用户名已被注册</p>");               
                 redirect("/backstage/students_new");
             }
+            else if ($this->backstage_model->duplicate_courses())
+            {
+                $this->session->set_flashdata('message', "<p>学生只能选择每个课程的至多一个班级</p>");               
+                redirect("/backstage/students_new");
+            }
             else
             { 
                 $this->backstage_model->insert_student();
@@ -170,8 +175,16 @@ class Backstage extends CI_Controller {
         }
         else
         {
-            $this->backstage_model->update_student($userid);
-            redirect("/backstage/students");
+            if ($this->backstage_model->duplicate_courses())
+            {
+                $this->session->set_flashdata('message', "<p>学生只能选择每个课程的至多一个班级</p>");               
+                redirect("/backstage/students_new");
+            }
+            else
+            {
+                $this->backstage_model->update_student($userid);
+                redirect("/backstage/students");
+            }
         }        
     }
 
@@ -180,7 +193,7 @@ class Backstage extends CI_Controller {
         $this->backstage_model->delete_student($userid);
         redirect("/backstage/students");
     }
-
+    
     public function courses()
     {
         $this->load->view('backstage/htmlhead');

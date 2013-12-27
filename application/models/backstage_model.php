@@ -102,6 +102,13 @@ class Backstage_model extends CI_Model {
             else return FALSE;
     }
 
+    public function is_taking($userid, $courseid, $classid)
+    {
+        $query = $this->db->get_where('stu_belong',array('userid' => $userid, 'courseid' => $courseid, 'classid' => $classid));
+        if ($query->num_rows()>0) return TRUE;
+            else return FALSE;
+    }
+
     public function insert_teacher()
     {
         $data = array
@@ -119,8 +126,7 @@ class Backstage_model extends CI_Model {
         $classes = $this->input->post('class');
         foreach ($classes as $classid)
         {
-            $query = $this->backstage_model->get_class_info($classid);
-            $row = $query->first_row();
+            $row = $this->backstage_model->get_class_info($classid);
             $courseid = $row->courseid;
 
             $data = array
@@ -150,8 +156,7 @@ class Backstage_model extends CI_Model {
         $classes = $this->input->post('class');
         foreach ($classes as $classid)
         {
-            $query = $this->backstage_model->get_class_info($classid);
-            $row = $query->first_row();
+            $row = $this->backstage_model->get_class_info($classid);
             $courseid = $row->courseid;
 
             $data = array
@@ -188,8 +193,7 @@ class Backstage_model extends CI_Model {
         $classes = $this->input->post('class');
         foreach ($classes as $classid)
         {
-            $query = $this->backstage_model->get_class_info($classid);
-            $row = $query->first_row();
+            $row = $this->backstage_model->get_class_info($classid);            
             $courseid = $row->courseid;
 
             $data = array
@@ -219,8 +223,7 @@ class Backstage_model extends CI_Model {
         $classes = $this->input->post('class');
         foreach ($classes as $classid)
         {
-            $query = $this->backstage_model->get_class_info($classid);
-            $row = $query->first_row();
+            $row = $this->backstage_model->get_class_info($classid);
             $courseid = $row->courseid;
 
             $data = array
@@ -238,6 +241,86 @@ class Backstage_model extends CI_Model {
     {
         $this->db->delete('users', array('userid' => $userid));
         $this->db->delete('ta_belong', array('userid' => $userid)); 
+    }
+
+    public function duplicate_courses()
+    {
+        $classes = $this->input->post('class');
+        $courses = array();
+        foreach ($classes as $classid)
+        {
+            $row = $this->backstage_model->get_class_info($classid);
+            $courseid = $row->courseid;
+            $courses[] = $courseid;
+        }
+        $uni_courses = array_unique($courses);
+        if (count($uni_courses) != count($courses)) return TRUE;
+        else return FALSE;
+    }
+
+    public function insert_student()
+    {
+        $data = array
+        (
+            'userid' => $this->input->post('username'),
+            'password' => $this->input->post('username'),
+            'role' => "S",
+            'email' => $this->input->post('email'),
+            'name' => $this->input->post('name'),
+            'major' => $this->input->post('major'),
+            'tel' => $this->input->post('tel')   
+        );
+        $this->db->insert('users',$data);
+
+        $classes = $this->input->post('class');
+        foreach ($classes as $classid)
+        {
+            $row = $this->backstage_model->get_class_info($classid);
+            $courseid = $row->courseid;
+
+            $data = array
+            (
+                'userid' => $this->input->post('username'),
+                'courseid' => $courseid,
+                'classid' => $classid
+            );
+            $this->db->insert('stu_belong',$data);
+        }
+    }
+
+    public function update_student($userid)
+    {
+        $data = array
+        (            
+            'email' => $this->input->post('email'),
+            'name' => $this->input->post('name'),
+            'major' => $this->input->post('major'),
+            'tel' => $this->input->post('tel')
+        );
+        $this->db->update('users',$data,array('userid' => $userid));
+
+        //删除所有归属信息，再重新插入
+        $this->db->delete('stu_belong', array('userid' => $userid)); 
+        $classes = $this->input->post('class');
+        foreach ($classes as $classid)
+        {
+            $row = $this->backstage_model->get_class_info($classid);            
+            $courseid = $row->courseid;
+
+            $data = array
+            (
+                'userid' => $this->input->post('username'),
+                'courseid' => $courseid,
+                'classid' => $classid
+            );
+            $this->db->insert('stu_belong',$data);
+        }
+    }
+
+    public function delete_student($userid)
+    {
+        $this->db->delete('users', array('userid' => $userid));
+        $this->db->delete('stu_belong', array('userid' => $userid)); 
     }
 
     public function insert_class()
@@ -289,7 +372,7 @@ class Backstage_model extends CI_Model {
                 'courseid' => $courseid,
                 'classid' => $classid
             );
-            $this->db->insert('ta_belong',$data);
+            $this->db->insert('stu_belong',$data);
         }
     }
 

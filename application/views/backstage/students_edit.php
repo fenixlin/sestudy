@@ -80,7 +80,7 @@
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="tel">助理班级&nbsp;:</label>
+            <label class="control-label" for="tel">所属班级&nbsp;:</label>
             <div class="controls">
               <table class="table table-hover wrapped">
                 <tbody>
@@ -117,7 +117,7 @@
                       echo ">";
 
                       echo "<td><input type=\"checkbox\" name=\"class[]\" value=\"".$row->classid."\"";
-                      if ($this->backstage_model->is_assisting($userid, $row->courseid, $row->classid)) echo "checked></td>";                     
+                      if ($this->backstage_model->is_taking($userid, $row->courseid, $row->classid)) echo "checked></td>";                     
                         else echo "></td>";
 
                       echo "<td>".$row->classid."</td>";
