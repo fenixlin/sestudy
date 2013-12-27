@@ -27,47 +27,57 @@
       <table class="table table-hover">
         <tbody>
           <tr class="info">
-            <td style="width:10%">
-              id
+            <td style="width:5%">
+              <strong>id</strong>
             </td>
-            <td style="width:30%">
-              课程
+            <td style="width:20%">
+              <strong>学期</strong>
             </td>
-            <td style="width:30%">
-              时间
+            <td style="width:20%">
+              <strong>上课时间</strong>
+            </td>            
+            <td style="width:25%">
+              <strong>面向专业</strong>
             </td>
-            <td style="width:30%">
-              任课老师
+            <td style="width:20%">
+              <strong>任课老师</strong>
             </td>
-          </tr>
-          <tr>
-            <td style="width:10%">
-              1
-            </td>
-            <td style="width:30%">
-              <a href="<?=site_url()?>account/operate/1">软件需求分析与设计</a>
-            </td>
-            <td style="width:30%">
-              周一上午3, 4, 5节
-            </td>
-            <td style="width:30%">
-              邢卫，胡天磊
+            <td>
+              &nbsp;
             </td>
           </tr>
-          <tr class="info">
-            <td style="width:10%">
-              2
-            </td>
-            <td style="width:30%">
-              <a href="#">软件需求分析与设计</a>
-            </td>
-            <td style="width:30%">
-              周一下午6, 7, 8节
-            </td>
-            <td style="width:30%">
-              邢卫，刘玉生
-            </td>
-          </tr>
+          <?php
+            $courseid = $this->session->userdata('courseid');
+            $userid = $this->session->userdata('userid');
+            $query = $this->account_model->get_teacher_class_list($userid, $courseid);
+            $flag = FALSE;
+            foreach ($query->result() as $row)
+            {
+              echo "<tr";
+              if ($flag) echo " class=\"info\"";
+              echo ">";
+
+              echo "<td>".$row->classid."</td>";
+              echo "<td>".$row->term."</td>";
+              echo "<td>".$row->time."</td>";
+              echo "<td>".$row->major."</td>";
+
+              $tchlist = $this->account_model->get_class_teacher($courseid, $row->classid);              
+              echo "<td>";
+              foreach ($tchlist->result() as $tch)
+              {
+                echo $tch->name."&nbsp;";
+              }
+              echo "</td>";
+
+              echo "<td><a class=\"btn btn-primary\" href=\"".site_url()."account\\operate\\".$row->classid."\">选择</i></a>";              
+
+              echo "</tr>";
+
+              if (!$flag) $flag = TRUE;
+                else $flag = FALSE;
+            }
+          ?>
         </tbody>        
       </table>
 
@@ -76,15 +86,3 @@
     </div> <!-- row-fluid -->
   </div> <!-- content -->
 
-<script language="JavaScript" type="text/JavaScript">
-function HandleOnClose(url) {
-  var close = confirm("确认删除此消息？");
-  if ( close) {
-    window.open(url, '_self');
-  }
-  else
-  {
-    window.event;
-  }
-}
-</script>

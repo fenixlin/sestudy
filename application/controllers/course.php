@@ -10,11 +10,11 @@ class Course extends CI_Controller {
        	//$this->output->enable_profiler(TRUE);
     }
 
-    public function index($course)
+    public function index($courseid)
     {
-        if (!empty($course) && $course>=1 && $course<=3)
+        if (!empty($courseid) && $courseid>=1 && $courseid<=3)
         {
-            $this->session->set_userdata(array('course'=>$course));
+            $this->session->set_userdata(array('courseid'=>$courseid));
             redirect('/intro','refresh');
         }
         else return;

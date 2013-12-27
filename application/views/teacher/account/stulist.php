@@ -24,7 +24,7 @@
 
       <div id="maincontent" class="span9">
        <button class="btn btn-primary" style="float:right;">从文件导入学生列表</button>
-        <button class="btn" style="float:right; margin-right:10px;">添加学生</button>       
+        <button class="btn  btn-info" style="float:right; margin-right:10px;">添加学生</button>       
         <button class="btn" style="float:right; margin-right:10px;">从其他课程导入</button>       
         <legend><strong>班级学生列表</strong></legend>
       <table class="table table-hover">
