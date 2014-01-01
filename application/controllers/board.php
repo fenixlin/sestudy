@@ -1,5 +1,5 @@
 <?php
-class Forum extends CI_Controller
+class Board extends CI_Controller
 {
     public function __construct()
     {
@@ -10,40 +10,13 @@ class Forum extends CI_Controller
         $this->load->library('session');
         $this->output->enable_profiler(TRUE);
     }
-    public function index($forum_no = -1, $current_page = 1)
+    public function index($current_page = 1)
     {
         #待完成
         $limit = 5;
-        $forumid_array = $this->Forum_model->getForumid();
-
-        //die(print_r($forumid_array));
-        //选择默认登录
-        if($forum_no == -1)
-        {    
-            //若该用户有多个论坛
-            if(count($forumid_array) > 1)
-            {
-                $data = array(
-                    "forum_num" => count($forumid_array),
-                    "forumid_array" => $forumid_array
-                    );
-                //die(print_r($data));
-                $this->load->view('htmlhead');
-                $this->load->view('student/course_header');
-                $this->load->view('forum_select', $data);
-                $this->load->view('footer');
-                return;
-            }
-            //若只有一个论坛，则默认序号为0
-            else
-                $forum_no = 0;
-        }
-
-        //$forum_no表示用户的第几个讨论区，因为教师用户和助教用户可能有多个讨论区，当$forum_no的指大于用户讨论区个数时候报错
-        if($forum_no + 1 > count($forumid_array))
-            die('非法操作');
-
-        $forumid = $forumid_array[$forum_no]['forumid'];
+        
+        //forumid为0表示是公共讨论区
+        $forumid = 0;
 
         $offset = ($current_page - 1)*$limit;
         $topic_array = array();
@@ -55,41 +28,41 @@ class Forum extends CI_Controller
             "topic_total_num" => $topic_total_num,
             "forumid" => $forumid,
             "current_page" => $current_page,
-            "total_page" => $topic_total_num/$limit + 1,
-            "forum_no" => $forum_no);
+            "total_page" => $topic_total_num/$limit + 1
+            );
 
         $role = $this->session->userdata('role');
         if ($role=="S")
         {
             $this->load->view('htmlhead');
-            $this->load->view('student/course_header');
-            $this->load->view('forum', $data);
+            $this->load->view('student/board_header');
+            $this->load->view('board', $data);
             $this->load->view('footer');
         }
         else if ($role=="T")
         {
             $this->load->view('htmlhead');
-            $this->load->view('teacher/course_header');
-            $this->load->view('forum', $data);
+            $this->load->view('teacher/board_header');
+            $this->load->view('board', $data);
             $this->load->view('footer');
         }
         else if ($role=="A")
         {
             $this->load->view('htmlhead');
-            $this->load->view('assistant/course_header');
-            $this->load->view('forum', $data);
+            $this->load->view('assistant/board_header');
+            $this->load->view('board', $data);
             $this->load->view('footer');
         }
         else if ($role=="V") //保证用户是经过了登陆的
         {
             $this->load->view('htmlhead');
-            $this->load->view('visitor/course_header');
-            $this->load->view('forum', $data);
+            $this->load->view('visitor/board_header');
+            $this->load->view('board', $data);
             $this->load->view('footer');
         }
     }
 
-    public function submit($forum_no = 0, $current_page = 1)
+    public function submit($current_page = 1)
     {
         //验证
         #code here
@@ -120,11 +93,11 @@ class Forum extends CI_Controller
                 'noname' => $this->input->post('noname'));
             $this->Forum_model->insert_topic($data);
 
-            header('Location: '.site_url('forum/index/'.$forum_no.'/'.$current_page).'');
+            header('Location: '.site_url('board/index/'.$current_page).'');
         }
     }
 
-    public function reply($topic_id, $forum_no = 0, $current_page = 1)
+    public function reply($topic_id, $current_page = 1)
     {
         //验证
         #code here
@@ -157,7 +130,7 @@ class Forum extends CI_Controller
                 $this->Forum_model->insert_comment($data);
                 $this->Forum_model->increment_num_of_comment($topic_id);
                 
-                header('Location: '.site_url('forum/index/'.$forum_no.'/'.$current_page).'');
+                header('Location: '.site_url('board/index/'.$current_page).'');
             }
             else
             {

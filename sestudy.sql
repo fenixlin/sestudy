@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2013 年 12 月 25 日 07:39
+-- 生成日期: 2014 年 01 月 01 日 07:43
 -- 服务器版本: 5.1.44
 -- PHP 版本: 5.3.1
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `forum_relation` (
 
 INSERT INTO `forum_relation` (`id`, `forumid`, `classid`) VALUES
 (1, 1, 1),
-(2, 1, 2),
+(2, 4, 2),
 (3, 2, 3),
 (4, 3, 4);
 
@@ -329,7 +329,7 @@ CREATE TABLE IF NOT EXISTS `topic` (
   `content` text,
   `noname` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`topic_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- 转存表中的数据 `topic`
@@ -337,13 +337,16 @@ CREATE TABLE IF NOT EXISTS `topic` (
 
 INSERT INTO `topic` (`topic_id`, `author_id`, `author_name`, `forumid`, `number_of_comment`, `time`, `content`, `noname`) VALUES
 (13, 'student', '', 1, 3, 1387261444, '这是一个测试', 0),
-(14, 'student', '', 0, 1, 1387950202, '这门课程的期末考试是开卷吗？', 1),
+(14, 'student', '', 0, 2, 1387950202, '这门课程的期末考试是开卷吗？', 1),
 (15, 'student', '', 0, 0, 1387950953, 'Try it again\n', 0),
 (16, 'teacher', '', 0, 0, 1387953282, '请问一下大家希望答辩安排在什么时间？', 0),
 (17, 'teacher', '', 0, 0, 1387953325, '请问一下大家希望答辩安排在什么时间？', 0),
 (18, 'teacher', '', 0, 0, 1387953330, '请问一下大家希望答辩安排在什么时间？', 0),
 (19, 'teacher', '邢卫', 1, 0, 1387955765, 'Try a again', 0),
-(20, 'teacher', '邢卫', 1, 0, 1387956908, '啦啦啦', 0);
+(20, 'teacher', '邢卫', 1, 0, 1387956908, '啦啦啦', 0),
+(21, 'teacher', '邢卫', 0, 1, 1388561327, 'hello', 0),
+(22, 'teacher', '邢卫', 1, 0, 1388562169, 'abab', 0),
+(23, 'teacher', '邢卫', 4, 0, 1388562179, 'abbababaab', 0);
 
 -- --------------------------------------------------------
 
@@ -360,7 +363,7 @@ CREATE TABLE IF NOT EXISTS `topic_comment` (
   `content` text,
   `noname` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`comment_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 --
 -- 转存表中的数据 `topic_comment`
@@ -370,7 +373,9 @@ INSERT INTO `topic_comment` (`comment_id`, `topic_id`, `author_id`, `author_name
 (22, 13, 'student', '', 1387261462, '这是另外一个测试', 0),
 (23, 13, 'student', '', 1387261510, 'こんにちは', 0),
 (24, 13, 'student', '', 1387261700, '안녕하세요', 0),
-(25, 14, 'student', '', 1387950212, '闭卷', 0);
+(25, 14, 'student', '', 1387950212, '闭卷', 0),
+(26, 21, 'teacher', '邢卫', 1388561338, 'yeah!', 0),
+(27, 14, 'teacher', '邢卫', 1388561357, '为什么闭卷啊', 0);
 
 -- --------------------------------------------------------
 
