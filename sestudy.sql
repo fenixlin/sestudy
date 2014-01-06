@@ -19,6 +19,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- 数据库: `sestudy`
 --
 
+DROP DATABASE IF EXISTS `sestudy`;
+CREATE DATABASE IF NOT EXISTS `sestudy` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `sestudy`;
+
 -- --------------------------------------------------------
 
 --
@@ -125,6 +129,32 @@ INSERT INTO `intro` (`course`, `c_name`, `e_name`, `course_code`, `academy`, `cr
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `link`
+--
+
+CREATE TABLE IF NOT EXISTS `link` (
+  `linkid` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  `url` varchar(50) NOT NULL,
+  `information` varchar(200) DEFAULT '无',
+  PRIMARY KEY (`linkid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
+-- 转存表中的数据 `link`
+--
+
+INSERT INTO `link` (`name`, `url`, `information`) VALUES
+('浙江大学办公网', 'http://zupo.zju.edu.cn/', '这是浙江大学办公网'),
+('浙江大学计算机科学与技术学院', 'http://www.cs.zju.edu.cn/', '这是浙江大学计算机科学与技术学院'),
+('浙江大学本科生院', 'http://ugrs.zju.edu.cn/', '这是浙江大学本科生院'),
+('CC98', 'http://www.cc98.org/', '校内论坛');
+
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `notice`
 --
 
@@ -211,6 +241,8 @@ CREATE TABLE IF NOT EXISTS `recourse` (
   `uploaddate` date NOT NULL,
   `information` varchar(200) DEFAULT '无',
   `downcount` int(8) DEFAULT '0',
+  `classid` int(11) NOT NULL,
+  `courseid` int(11) NOT NULL,
   PRIMARY KEY (`filename`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -218,8 +250,69 @@ CREATE TABLE IF NOT EXISTS `recourse` (
 -- 转存表中的数据 `recourse`
 --
 
-INSERT INTO `recourse` (`userid`, `name`, `filename_see`, `filename`, `uploaddate`, `information`, `downcount`) VALUES
-('teacher', '刑卫', 'picture.jpg', '1387303400picture.jpg', '2013-12-17', '你好，这是图片', 0);
+INSERT INTO `recourse` (`userid`, `name`, `filename_see`, `filename`, `uploaddate`, `information`, `downcount`, `classid`, `courseid`) VALUES
+('teacher', '刑卫', 'picture.jpg', '1387303400picture.jpg', '2013-12-17', '你好，这是图片', 0, 1, 1);
+
+-- --------------------------------------------------------
+--
+-- 表的结构 `share`
+--
+
+CREATE TABLE IF NOT EXISTS `share` (
+  `userid` varchar(20) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  `filename_see` varchar(30) NOT NULL,
+  `filename` varchar(200) NOT NULL,
+  `uploaddate` date NOT NULL,
+  `information` varchar(200) DEFAULT '无',
+  `downcount` int(8) DEFAULT '0',
+  `courseid` int(11) NOT NULL,
+  PRIMARY KEY (`filename`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
+-- 转存表中的数据 `share`
+--
+
+INSERT INTO `share` (`userid`, `name`, `filename_see`, `filename`, `uploaddate`, `information`, `downcount`, `courseid`) VALUES
+('teacher', '刑卫', 'picture.jpg', '1387303400picture.jpg', '2013-12-17', '111', 0, 1),
+('teacher4', '金波', 'picture2.jpg', '1387303400picture2.jpg', '2013-12-17', '222', 0, 2),
+('teacher4', '金波', 'picture3.jpg', '1387303400picture3.jpg', '2013-12-17', '333', 0, 2),
+('teacher2', '胡天磊', 'picture4.jpg', '1387303400picture4.jpg', '2013-12-17', '444', 0, 1),
+('teacher', '刑卫', 'picture5.jpg', '1387303400picture5.jpg', '2013-12-17', '555', 0, -1),
+('student', '某某', 'picture6.jpg', '1387303400picture6.jpg', '2013-12-17', '666', 0, 1);
+
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `slide`
+--
+
+CREATE TABLE IF NOT EXISTS `slide` (
+  `userid` varchar(20) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  `filename_see` varchar(30) NOT NULL,
+  `filename` varchar(200) NOT NULL,
+  `uploaddate` date NOT NULL,
+  `information` varchar(200) DEFAULT '无',
+  `downcount` int(8) DEFAULT '0',
+  `classid` int(11) NOT NULL,
+  `courseid` int(11) NOT NULL,
+  PRIMARY KEY (`filename`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
+-- 转存表中的数据 `slide`
+--
+
+INSERT INTO `slide` (`userid`, `name`, `filename_see`, `filename`, `uploaddate`, `information`, `downcount`, `classid`, `courseid`) VALUES
+('teacher', '刑卫', 'picture.jpg', '1387303400picture.jpg', '2013-12-17', '你好，这是图片', 0, 1, 1),
+('teacher4', '金波', 'picture2.jpg', '1387303401picture2.jpg', '2013-12-17', '你好，这是图片', 0, 3, 2),
+('teacher2', '胡天磊', '123.ppt', '1387303400123.ppt', '2013-12-17', 'PPT', 0, 1, 1);
+
 
 -- --------------------------------------------------------
 

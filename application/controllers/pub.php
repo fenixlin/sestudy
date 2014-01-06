@@ -5,7 +5,7 @@ class Pub extends CI_Controller {
 	public function __construct()
 	{
 	    parent::__construct();
-		$this->load->model('recourse_model');
+		$this->load->model('share_model');
 	}
 	
 	public function index()
@@ -48,7 +48,7 @@ class Pub extends CI_Controller {
 		//$file_name="c.jpg"; 
 		//用以解决中文不能显示出来的问题 
 		$file_name=iconv("utf-8","gb2312",$file_name); 
-		$file_sub_path=dirname(dirname(dirname(__FILE__)))."/upload/recourse/"; 
+		$file_sub_path=dirname(dirname(dirname(__FILE__)))."/upload/share/"; 
 		$file_path=$file_sub_path.$file_name; 
 		//首先要判断给定的文件存在与否 
 		if(!file_exists($file_path)){ 
@@ -72,8 +72,17 @@ class Pub extends CI_Controller {
 			$file_count+=$buffer; 
 			echo $file_con; 
 		}
-		$this -> recourse_model->douwncount_plus($file_name);
+		$this -> share_model->douwncount_plus($file_name);
 		fclose($fp); 
+	}
+	
+	public function delete_share($filename)
+	{
+		$this->share_model->delete_file($filename);
+		chmod(dirname(dirname(dirname(__FILE__)))."/upload/share", 0777);  //更改权限
+		unlink(dirname(dirname(dirname(__FILE__)))."/upload/share/".$filename);
+		echo "<script>alert('删除成功')</script>";
+	    echo "<script>location.href='/sestudy/index.php/pub';</script>";
 	}
 	
 	public function abc()

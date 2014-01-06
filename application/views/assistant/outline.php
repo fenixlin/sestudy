@@ -12,7 +12,7 @@
             <li><a href="<?=site_url()?>group.html">学生分组</a></li>            
             <li class="divider"></li>
             <li><a href="<?=site_url()?>slide.html">课件上传</a></li>
-            <li><a href="<?=site_url()?>resource.html">资料上传</a></li>
+            <li><a href="<?=site_url()?>upload.html">资料上传</a></li>
             <li><a href="<?=site_url()?>share.html">共享资料管理</a></li>
             <li class="divider"></li>
             <li><a href="<?=site_url()?>notice.html">消息发布</a></li>

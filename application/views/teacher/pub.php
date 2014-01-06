@@ -1,23 +1,24 @@
   <div id="content" class="main box container-fluid">
       <div id="maincontent" class="span9">
-	   <?php $data = $this->recourse_model->pub_downtable();?>
+	   <?php $data = $this->share_model->pub_downtable();?>
 	   <?php $i = 1; ?>
        <table class="table table-hover" style="border-left: 1px solid #dddddd;border-right: 1px solid #dddddd;border-bottom: 1px solid #dddddd;border-collapse: separate;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;">
           <tbody>
             <tr class="info">
-              <td style="width:60%"><strong>文件名</strong></td>
-              <td width =13%><strong>上传人</strong></td>
-			  <td width =13%><strong>日期</strong></td>
-			  <td width =13%><strong>下载次数</strong></td>
+              <td style="width:55%"><strong>文件名</strong></td>
+              <td width =13% style="text-align:center"><strong>上传人</strong></td>
+			  <td width =13% style="text-align:center"><strong>日期</strong></td>
+			  <td width =13% style="text-align:center"><strong>下载次数</strong></td>
 			  <?php //echo $this->session->userdata('name');?>
+			  <td></td>
 			  <td></td>
             </tr>
 			<?php foreach($data as $key => $value) { ?>
 			<tr>
               <td><?=$data[$key]->filename_see?></td>
-              <td><?=$data[$key]->name?></td>
-			  <td><?=$data[$key]->uploaddate?></td>
-			  <td><?=$data[$key]->downcount?></td>
+              <td style="text-align:center"><?=$data[$key]->name?></td>
+			  <td style="text-align:center"><?=$data[$key]->uploaddate?></td>
+			  <td style="text-align:center"><?=$data[$key]->downcount?></td>
 			  <td>
 			  <a href="#myModal<?=$key?>" data-toggle="modal"><i class="icon-download-alt"></i></a>
 				<div id="myModal<?=$key?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -36,6 +37,7 @@
 					</div>
 				</div>
 			  </td>
+			  <td><a href="javascript:HandleOnClose('<?=site_url()?>pub/delete_share/<?=$data[$key]->filename?>')"><i class="icon-remove"></i></a></td>
             </tr>
 			<?php } ?>
           </tbody>
@@ -44,4 +46,15 @@
     </div> <!-- row-fluid -->
   </div> <!-- content -->
   
-  
+  <script language="JavaScript" type="text/JavaScript">
+function HandleOnClose(url) {
+  var close = confirm("确认删除该资料？");
+  if ( close) {
+    window.open(url, '_self');
+  }
+  else
+  {
+    window.event;
+  }
+}
+</script>
