@@ -3,11 +3,9 @@
   <div id="header" class="main box">
     <h1 id="logo">Software&nbsp;<span>Engineering</span></h1>
     <ul id="header_nav">
-      <li><a href="<?=site_url()?>backstage.html">后台</a></li>
-      <span>|</span>      
-      <li><a href="<?=site_url()?>prof.html">个人账户管理</a></li>
+      <li><a href="<?=site_url()?>help.html">帮助</a></li>
       <span>|</span>
-      <li><a href="<?=site_url()?>logout.html">登出</a></li>
+      <li><a href="<?=site_url()?>login.html">登陆</a></li>
     </ul> <!-- header_nav -->
   </div> <!-- header -->
 
