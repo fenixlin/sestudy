@@ -30,7 +30,7 @@ class Outline_model extends CI_Model {
             'recommendation' => $this->input->post('recommendation')
         );
         
-        $this->db->update('outline',$data);        
+        $this->db->update('outline',$data,array('course' => $course));        
     }
 }
 

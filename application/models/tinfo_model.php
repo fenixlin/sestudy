@@ -27,7 +27,7 @@ class Tinfo_model extends CI_Model {
             'info' => $this->input->post('info'),
         );
         
-        $this->db->update('tinfo',$data);        
+        $this->db->update('tinfo',$data,array('course' => $course));        
     }
 }
 

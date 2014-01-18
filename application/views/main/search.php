@@ -46,9 +46,9 @@
         <div id="loginbox">
           <h4>课程介绍</h4>
           本网站包括三门课程：<br>
-          1.软件需求分析与设计<br>
-          2.项目管理与案例分析M<br>
-          3.质量保证与测试<br><br>
+          <a href="<?=site_url()?>course/index/1">1.软件需求分析与设计</a><br>
+          <a href="<?=site_url()?>course/index/2">2.项目管理与案例分析</a><br>
+          <a href="<?=site_url()?>course/index/3">3.质量保证与测试</a><br><br>
         </div>
         <div id="loginbox" class="text-center">
           <h4 class="text-left">友情链接</h4>
