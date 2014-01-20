@@ -26,6 +26,7 @@
             <ul>
               <li><a href="<?=site_url()?>all_teacher.html">教师队伍</a></li>
               <li><a href="<?=site_url()?>links.html">友情链接</a></li>
+              <li><a href="<?=site_url()?>help.html">帮助</a></li>
             </ul>
           </li>
         </ul>

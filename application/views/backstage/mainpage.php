@@ -30,7 +30,7 @@
   <div class="container">
   	<div id="internal_container">
     	<legend><strong>欢迎进入管理后台！</strong></legend>
-    	<p>目前系统版本：v 0.8</p>         
+    	<p>目前系统版本：Beta v 1.0</p>         
         <p>如有疑问，请随时联系维护人员：<a href="mailto: fenixl@163.com">fenixl@163.com</a></p>
   	</div>
 	</body>

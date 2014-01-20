@@ -206,7 +206,7 @@ class Notice_model extends CI_Model {
 
     public function get_title($title)
     {
-        if (strlen($title)<=50)
+        if (strlen($title)<=75)
         {
             $result = $title;
         }

@@ -26,6 +26,7 @@
             <ul>
               <li class="active"><a href="<?=site_url()?>all_teacher.html">教师队伍</a></li>
               <li><a href="<?=site_url()?>links.html">友情链接</a></li>
+              <li><a href="<?=site_url()?>help.html">帮助</a></li>
             </ul>
           </li>
         </ul>
@@ -71,7 +72,7 @@
           <h4>课程介绍</h4>
           本网站包括三门课程：<br>
           1.软件需求分析与设计<br>
-          2.项目管理与案例分析M<br>
+          2.项目管理与案例分析<br>
           3.质量保证与测试<br><br>
         </div>
         <div id="loginbox" class="text-center">

@@ -3,7 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
+<<<<<<< HEAD
 -- 生成日期: 2014 年 01 月 19 日 12:07
+=======
+-- 生成日期: 2014 年 01 月 19 日 16:09
+>>>>>>> Beta版本
 -- 服务器版本: 5.6.12-log
 -- PHP 版本: 5.4.16
 
@@ -21,6 +25,34 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `sestudy` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `sestudy`;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `assignment`
+--
+
+CREATE TABLE IF NOT EXISTS `assignment` (
+  `number` int(3) NOT NULL AUTO_INCREMENT,
+  `classid` int(11) NOT NULL,
+  `courseid` int(11) NOT NULL,
+  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `requirement` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`number`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
+
+--
+-- 转存表中的数据 `assignment`
+--
+
+INSERT INTO `assignment` (`number`, `classid`, `courseid`, `title`, `date`, `requirement`) VALUES
+(1, 1, 1, '第一次作业', '2013-09-10', '请完成第一次作业'),
+(2, 2, 1, '第一次作业', '2013-09-11', '请完成第一次作业'),
+(3, 1, 1, '第二次作业', '2013-09-23', '请完成第二次作业'),
+(4, 2, 1, '第二次作业', '2013-09-22', '请完成第二次作业'),
+(12, 2, 1, '555', '2014-01-17', 'ttt111'),
+(16, 1, 1, 'No 5', '2014-01-31', '1234567');
 
 -- --------------------------------------------------------
 
@@ -486,8 +518,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`userid`, `password`, `role`, `email`, `name`, `major`, `tel`, `ques`, `answer`) VALUES
-('student', 'student', 'S', 'student@zju.edu.cn', '某某', '计算机科学与技术', '18868813800', '三点一四一五九二六', '5358979'),
-('ta', 'ta', 'A', NULL, '测试员A', NULL, NULL, NULL, NULL),
+('student', 'student', 'S', 'student@zju.edu.cn', '林靖豪', '软件工程', '18868813800', '三点一四一五九二六', '5358979'),
+('student2', 'student2', 'S', 'student2@163.com', '黄坤', '软件工程', '13128492137', NULL, NULL),
+('ta', 'ta', 'A', 'zjupm2013@163.com', '高涛', NULL, NULL, NULL, NULL),
+('ta2', 'ta2', 'A', 'SRE_TA@163.com', '郑外涛', '计算机学院', NULL, NULL, NULL),
 ('teacher', 'teacher', 'T', 'wxing@zju.edu.cn', '邢卫', '计算机科学与技术', '18788888888', '', ''),
 ('teacher2', 'teacher2', 'T', 'htl@zju.edu.cn', '胡天磊', '计算机科学与技术', '18766666666', NULL, NULL),
 ('teacher4', 'teacher4', 'T', 'jb@21cn.com', '金波', '计算机科学与技术', NULL, NULL, NULL);
